@@ -1,0 +1,19 @@
+Sorry, I forgot to make changelog file in the past 4 commits times.
+I will start listing the changes from 16/05/2020, also will add the 4 missed commits. 
+The project Github commit can prove that.
+
+************************************** Changelog **************************************
+
+Day1: 13/05/2020 
+Build Login page and Home page.
+
+Day2: 14/05/2020 
+Create the basic parts of the game: 
+game logic, board drawing, coordinate system, player scoring.
+
+Day3: 15/05/2020 
+Create Go Bang algorithm.
+Build Man-machine models (Single player, including simple model and difficult model).
+Build Fight model (Two players play chess in one mobile).
+
+Day4: 16/05/2020 
