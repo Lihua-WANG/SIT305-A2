@@ -25,14 +25,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Assign the retrieved intent to the intentMain variable
         Intent intentMain=getIntent();
-        //Get the username passed in Main2Activity
+        //Get the username passed in LoginActivity
         String nameInMyView=intentMain.getStringExtra("editUsername");
         //Get man-machine battle button control by id
         Button newGame = (Button) findViewById(R.id.new_game);
         //Get two-player button control by id
         Button fight = (Button) findViewById(R.id.fight);
-        //Get the control button of networked battle by id
-        Button netFight = (Button) findViewById(R.id.conn_fight);
+//        //Get the control button of networked battle by id
+//        Button netFight = (Button) findViewById(R.id.conn_fight);
+        // Get logout button control by id
+        Button logout = findViewById(R.id.bt_main_logout);
 
         //Register the listener for the man-machine battle button
         newGame.setOnClickListener(new OnClickListener() {
@@ -86,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, FightGameActivity.class));
             }
         });
+        //Register a listener for logout button
+        // When the button is clicked, jump to the LoginActivity.class interface
+        logout.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
+
 //        //为联网对战按钮注册监听器
 //        //当该按钮被点击时，跳转到ConnectionActivity.class界面
 //        netFight.setOnClickListener(new OnClickListener() {

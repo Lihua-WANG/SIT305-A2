@@ -3,6 +3,7 @@
     <string name="new_game">New Game</string>
     <string name="fight">Fight</string>
     <string name="fight_connection">Network Fight</string>
+    <string name="bt_main_logout">Logout</string>
     <string name="OldUserName">Gobang</string>
     <string name="OldPassword">123456</string>
     <string name="action_settings">Settings</string>

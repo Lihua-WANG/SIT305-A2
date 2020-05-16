@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/login"
     android:filterTouchesWhenObscured="true"
-    tools:context=".Main2Activity">
+    tools:context=".LoginActivity">
 
     -
 
@@ -38,23 +38,24 @@
             android:layout_marginLeft="0dp">
 
             <EditText
-                android:id="@+id/userID"
+                android:id="@+id/et_loginactivity_username"
                 android:layout_width="221dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="80dp"
                 android:layout_marginRight="100dp"
                 android:height="75dp"
+                android:hint="Input your username"
                 android:inputType="text"
                 android:maxLength="20"
-                android:paddingLeft="55dp"
-                android:paddingRight="60dp" />
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="left|center_vertical"
                 android:gravity="center"
-                android:text="用户名："
+                android:text="Username: "
+                android:textColor="#050505"
                 android:textSize="18sp"
                 android:visibility="visible" />
 
@@ -89,22 +90,23 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:text="密码"
+                android:text="Password: "
+                android:textColor="#050505"
                 android:textSize="18sp"
                 android:visibility="visible" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/et_loginactivity_password"
                 android:layout_width="217dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="100dp"
                 android:height="75dp"
+                android:hint="Input your password"
                 android:inputType="textPassword"
                 android:maxLength="20"
-                android:paddingLeft="55dp"
-                android:paddingRight="60dp"
+                android:paddingLeft="5dp"
                 android:visibility="visible" />
 
             <Button
@@ -131,31 +133,23 @@
             android:backgroundTint="#ff485607"
             android:gravity="center"
             android:onClick="run"
-            android:text="登录"
+            android:text="Login"
             android:textColor="@android:color/white"
             tools:ignore="OnClick" />
 
         <Button
-            android:id="@+id/login_error"
+            android:id="@+id/tv_loginactivity_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/login"
             android:layout_alignRight="@id/login"
+            android:layout_marginTop="7dp"
             android:background="#00000000"
-            android:text="忘记密码"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/login"
-            android:layout_alignLeft="@id/login"
-            android:background="#00000000"
-            android:gravity="left|center_vertical"
-            android:text="注册"
+            android:text="Sign Up"
             android:textSize="16sp"
-            android:visibility="visible" />
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:onClick="onClick" />
 
     </RelativeLayout>
 
