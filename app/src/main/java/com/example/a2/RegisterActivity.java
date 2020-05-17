@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mEtRegisteractivityPassword2;
     private EditText mEtRegisteractivityPhonecodes;
     private ImageView mIvRegisteractivityShowcode;
-//    private RelativeLayout mRlRegisteractivityBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mEtRegisteractivityPassword2 = findViewById(R.id.et_registeractivity_password2);
         mEtRegisteractivityPhonecodes = findViewById(R.id.et_registeractivity_phoneCodes);
         mIvRegisteractivityShowcode = findViewById(R.id.iv_registeractivity_showCode);
-//        mRlRegisteractivityBottom = findViewById(R.id.rl_registeractivity_bottom);
 
         /**
          * There are three places you can click on the registration page

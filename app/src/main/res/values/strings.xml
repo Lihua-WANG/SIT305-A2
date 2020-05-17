@@ -29,5 +29,6 @@
     <string name="setting">Setting</string>
     <string name="ok">OK</string>
     <string name="Continue">Continue</string>
+    <string name="feedback_email">Feedback</string>
 
 </resources>

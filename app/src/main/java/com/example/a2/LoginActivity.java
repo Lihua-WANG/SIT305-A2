@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        playbgmRing();
+//        playbgmRing();
         // Assign the layout login activity_login to LoginActivity
         setContentView(R.layout.activity_login);
 
@@ -114,23 +114,23 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public AssetManager assetManager;
-
-    public MediaPlayer playbgmRing() {
-        MediaPlayer mediaPlayer = null;
-        try {
-            mediaPlayer = new MediaPlayer();
-            assetManager = getAssets();
-            AssetFileDescriptor fileDescriptor = assetManager.openFd("backgroundMusic.mp3");
-            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),
-                    fileDescriptor.getStartOffset());
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            mediaPlayer.setLooping(true);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return mediaPlayer;
-    }
+//    public AssetManager assetManager;
+//
+//    public MediaPlayer playbgmRing() {
+//        MediaPlayer mediaPlayer = null;
+//        try {
+//            mediaPlayer = new MediaPlayer();
+//            assetManager = getAssets();
+//            AssetFileDescriptor fileDescriptor = assetManager.openFd("backgroundMusic.mp3");
+//            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),
+//                    fileDescriptor.getStartOffset());
+//            mediaPlayer.prepare();
+//            mediaPlayer.start();
+//            mediaPlayer.setLooping(true);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return mediaPlayer;
+//    }
 }

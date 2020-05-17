@@ -1,6 +1,8 @@
 package com.example.a2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -31,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         Button newGame = (Button) findViewById(R.id.new_game);
         //Get two-player button control by id
         Button fight = (Button) findViewById(R.id.fight);
-//        //Get the control button of networked battle by id
-//        Button netFight = (Button) findViewById(R.id.conn_fight);
         // Get logout button control by id
         Button logout = findViewById(R.id.bt_main_logout);
+        //Get feedback button control by id
+        Button feedback = findViewById(R.id.feedback);
+//        //Get the control button of networked battle by id
+//        Button netFight = (Button) findViewById(R.id.conn_fight);
 
         //Register the listener for the man-machine battle button
         newGame.setOnClickListener(new OnClickListener() {
@@ -88,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, FightGameActivity.class));
             }
         });
+
         //Register a listener for logout button
         // When the button is clicked, jump to the LoginActivity.class interface
         logout.setOnClickListener(new OnClickListener() {
@@ -95,6 +100,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
+
+        feedback.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "wanglihua@deakin.edu.au", null));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback on Go Bang Application");
+                intent.putExtra(Intent.EXTRA_TEXT, "What I would like to give feedback about:");
+                startActivity(intent);
             }
         });
 
