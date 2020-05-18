@@ -30,5 +30,12 @@
     <string name="ok">OK</string>
     <string name="Continue">Continue</string>
     <string name="feedback_email">Feedback</string>
+    <string name="feedback_success">Send successfully</string>
+    <string name="feedback_failed">Failed sending!</string>
+    <string name="waiting">Processing, please wait...</string>
+    <string name="request_content">Please input your feedback</string>
+    <string name="submit">Submit</string>
+    <string name="feedback_contact_hint">Contact number</string>
+    <string name="feedback_content_hint">Please input your feedback</string>
 
 </resources>
