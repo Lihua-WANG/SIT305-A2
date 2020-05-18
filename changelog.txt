@@ -17,3 +17,9 @@ Build Man-machine models (Single player, including simple model and difficult mo
 Build Fight model (Two players play chess in one mobile).
 
 Day4: 16/05/2020 
+Update Login activity.
+Build the register page, including using SQLsite to store users' information.
+
+Day5 17/05/2020
+Build feedback function.
+Add some background music media.
