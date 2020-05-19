@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //        //Get the control button of networked battle by id
 //        Button netFight = (Button) findViewById(R.id.conn_fight);
 
+        Button netFight = (Button) findViewById(R.id.conn_fight);
         //Register the listener for the man-machine battle button
         newGame.setOnClickListener(new OnClickListener() {
             Intent i ;
@@ -107,23 +108,24 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", "wanglihua@deakin.edu.au", null));
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback on Go Bang Application");
-                intent.putExtra(Intent.EXTRA_TEXT, "What I would like to give feedback about:");
-                startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+//                        "mailto", "wanglihua@deakin.edu.au", null));
+//                intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback on Go Bang Application");
+//                intent.putExtra(Intent.EXTRA_TEXT, "What I would like to give feedback about:");
+//                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, FeedbackActivity.class));
             }
         });
 
-//        //为联网对战按钮注册监听器
-//        //当该按钮被点击时，跳转到ConnectionActivity.class界面
-//        netFight.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, ConnectionActivity.class));
-//            }
-//        });
+        //为联网对战按钮注册监听器
+        //当该按钮被点击时，跳转到ConnectionActivity.class界面
+        netFight.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
 
     }
 

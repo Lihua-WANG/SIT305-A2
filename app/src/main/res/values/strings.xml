@@ -37,5 +37,7 @@
     <string name="submit">Submit</string>
     <string name="feedback_contact_hint">Contact number</string>
     <string name="feedback_content_hint">Please input your feedback</string>
+    <string name="toast_message">Playback completed</string>
+    <string name="buffering_string">Buffering</string>
 
 </resources>

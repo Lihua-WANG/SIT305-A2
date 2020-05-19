@@ -1,20 +1,17 @@
 package com.example.a2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FeedbackActivity extends AppCompatActivity {
 
@@ -42,15 +39,15 @@ public class FeedbackActivity extends AppCompatActivity {
         mContentEdit.requestFocus();
 
         mLeftBtn.setVisibility(View.GONE);
-        mRightBtn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.setClass(FeedbackActivity.this, FeedbackRecordActivity.class);
-                startActivity(intent);
-            }
-        });
+//        mRightBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.setClass(FeedbackActivity.this, FeedbackRecordActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         mSubmitBtn = findViewById(R.id.submit_button);
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {

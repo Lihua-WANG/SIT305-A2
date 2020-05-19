@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/feedback_background_color"
-    tools:context=".FeedbackActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/feedback_title" />
 
