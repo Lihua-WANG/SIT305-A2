@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        playbgmRing();
+//        playbgmRing();
         setContentView(R.layout.activity_main);
         //Assign the retrieved intent to the intentMain variable
         Intent intentMain=getIntent();
@@ -39,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
         Button feedback = findViewById(R.id.feedback);
 //        //Get the control button of networked battle by id
 //        Button netFight = (Button) findViewById(R.id.conn_fight);
-
+        // Get the control button pf Tutorial by id
         Button netFight = (Button) findViewById(R.id.conn_fight);
+        // Get the control button of music by id
+        Button musicStart = (Button) findViewById(R.id.btn_start_music);
+        Button musicStop = (Button) findViewById(R.id.btn_stop_music);
+
         //Register the listener for the man-machine battle button
         newGame.setOnClickListener(new OnClickListener() {
             Intent i ;
@@ -127,26 +131,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //attaching onclicklistener to buttons of music
+        //Start background music service
+        musicStart.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(MainActivity.this, BackMusicService.class));
+            }
+        });
+
+        //Stop background music service
+        musicStop.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                stopService(new Intent(MainActivity.this, BackMusicService.class));
+            }
+        });
+
     }
 
-    public AssetManager assetManager;
-    public MediaPlayer playbgmRing() {
-        MediaPlayer mediaPlayer = null;
-        try {
-            mediaPlayer = new MediaPlayer();
-            assetManager = getAssets();
-            AssetFileDescriptor fileDescriptor = assetManager.openFd("backgroundMusic.mp3");
-            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),
-                    fileDescriptor.getStartOffset());
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            mediaPlayer.setLooping(true);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return mediaPlayer;
-    }
+//    public AssetManager assetManager;
+//    public MediaPlayer playbgmRing() {
+//        MediaPlayer mediaPlayer = null;
+//        try {
+//            mediaPlayer = new MediaPlayer();
+//            assetManager = getAssets();
+//            AssetFileDescriptor fileDescriptor = assetManager.openFd("backgroundMusic.mp3");
+//            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),
+//                    fileDescriptor.getStartOffset());
+//            mediaPlayer.prepare();
+//            mediaPlayer.start();
+//            mediaPlayer.setLooping(true);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return mediaPlayer;
+//    }
 
 
 }
