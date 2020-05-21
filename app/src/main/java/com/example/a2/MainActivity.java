@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                startActivity(new Intent(MainActivity.this, About2Activity.class));
             }
         });
 
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService(new Intent(MainActivity.this, BackMusicService.class));
+                Toast.makeText(MainActivity.this, "Music Service started.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -147,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stopService(new Intent(MainActivity.this, BackMusicService.class));
+                Toast.makeText(MainActivity.this, "Music Service stopped.", Toast.LENGTH_LONG).show();
             }
         });
 

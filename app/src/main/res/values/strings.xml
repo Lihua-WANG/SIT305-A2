@@ -39,5 +39,12 @@
     <string name="feedback_content_hint">Please input your feedback</string>
     <string name="toast_message">Playback completed</string>
     <string name="buffering_string">Buffering</string>
+    <string name="AboutVideo">Tutorial</string>
+    <string name="AboutBasic">Basic Function</string>
+    <string name="AboutFight">Fight Model</string>
+    <string name="AboutAI">AI Model</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
