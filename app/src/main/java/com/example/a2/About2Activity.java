@@ -37,7 +37,7 @@ public class About2Activity extends AppCompatActivity implements View.OnClickLis
         vp.setOffscreenPageLimit(2);//ViewPager的缓存为2帧
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);//初始设置ViewPager选中第一帧
-        AboutAI.setTextColor(Color.parseColor("#1ba0e1"));
+        AboutAI.setTextColor(Color.parseColor("#485607"));
 
         //ViewPager的监听事件
         vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -137,25 +137,25 @@ public class About2Activity extends AppCompatActivity implements View.OnClickLis
      */
     private void changeTextColor(int position) {
         if (position == 0) {
-            AboutAI.setTextColor(Color.parseColor("#1ba0e1"));
+            AboutAI.setTextColor(Color.parseColor("#485607"));
             AboutFight.setTextColor(Color.parseColor("#000000"));
             AboutBasic.setTextColor(Color.parseColor("#000000"));
             AboutVideo.setTextColor(Color.parseColor("#000000"));
         } else if (position == 1) {
             AboutAI.setTextColor(Color.parseColor("#000000"));
-            AboutFight.setTextColor(Color.parseColor("#1ba0e1"));
+            AboutFight.setTextColor(Color.parseColor("#485607"));
             AboutBasic.setTextColor(Color.parseColor("#000000"));
             AboutVideo.setTextColor(Color.parseColor("#000000"));
         } else if (position == 2) {
             AboutAI.setTextColor(Color.parseColor("#000000"));
             AboutFight.setTextColor(Color.parseColor("#000000"));
-            AboutBasic.setTextColor(Color.parseColor("#1ba0e1"));
+            AboutBasic.setTextColor(Color.parseColor("#485607"));
             AboutVideo.setTextColor(Color.parseColor("#000000"));
         } else if (position == 3) {
             AboutAI.setTextColor(Color.parseColor("#000000"));
             AboutFight.setTextColor(Color.parseColor("#000000"));
             AboutBasic.setTextColor(Color.parseColor("#000000"));
-            AboutVideo.setTextColor(Color.parseColor("#1ba0e1"));
+            AboutVideo.setTextColor(Color.parseColor("#485607"));
         }
     }
 }

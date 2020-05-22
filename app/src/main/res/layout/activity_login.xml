@@ -47,7 +47,7 @@
                 android:hint="Input your username"
                 android:inputType="text"
                 android:maxLength="20"
-                android:paddingLeft="5dp" />
+                android:paddingLeft="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:hint="Input your password"
                 android:inputType="textPassword"
                 android:maxLength="20"
-                android:paddingLeft="5dp"
+                android:paddingLeft="15dp"
                 android:visibility="visible" />
 
             <Button
@@ -123,12 +123,30 @@
 
         </FrameLayout>
 
+        <CheckBox
+            android:id="@+id/check_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usecode_layout"
+            android:layout_marginTop="7dp"
+            android:text="Remember account" />
+
+        <CheckBox
+            android:id="@+id/check_autoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usecode_layout"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:text="Auto Login" />
+
         <Button
             android:id="@+id/login"
             android:layout_width="fill_parent"
             android:layout_height="44dp"
             android:layout_below="@id/usecode_layout"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:background="#ff336699"
             android:backgroundTint="#ff485607"
             android:gravity="center"
@@ -136,6 +154,7 @@
             android:text="Login"
             android:textColor="@android:color/white"
             tools:ignore="OnClick" />
+
 
         <Button
             android:id="@+id/tv_loginactivity_register"
@@ -148,8 +167,7 @@
             android:text="Sign Up"
             android:textSize="16sp"
             android:layout_centerVertical="true"
-            android:clickable="true"
-            android:onClick="onClick" />
+            android:clickable="true" />
 
     </RelativeLayout>
 
