@@ -2,6 +2,8 @@ package com.example.a2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import java.util.ArrayList;
@@ -35,15 +37,19 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox mCheckRemember;
     private CheckBox mCheckAutoLogin;
     private SharedPreferences sp;
-    private Boolean rem_isCheck = false;
-    private Boolean auto_isCheck = false;
 
+    //中介变量context
+    @SuppressLint("StaticFieldLeak")
+    private static LoginActivity context = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Assign the layout login activity_login to LoginActivity
         setContentView(R.layout.activity_login);
+
+        //初始化context
+        context = this;
 
         sp = this.getSharedPreferences("Account Data", 0);
 

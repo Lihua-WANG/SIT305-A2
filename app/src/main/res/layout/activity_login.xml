@@ -155,7 +155,6 @@
             android:textColor="@android:color/white"
             tools:ignore="OnClick" />
 
-
         <Button
             android:id="@+id/tv_loginactivity_register"
             android:layout_width="wrap_content"
@@ -170,6 +169,5 @@
             android:clickable="true" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>

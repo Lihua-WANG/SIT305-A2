@@ -2,34 +2,27 @@ package com.example.a2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.media.MediaPlayer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
-
-import java.io.IOException;
 
 import static com.example.a2.R.id.renjichoice_jiandan;
 
 
 public class MainActivity extends AppCompatActivity {
-    boolean stop = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        playbgmRing();
         setContentView(R.layout.activity_main);
-        //Assign the retrieved intent to the intentMain variable
-        Intent intentMain=getIntent();
-        //Get the username passed in LoginActivity
-        String nameInMyView=intentMain.getStringExtra("editUsername");
+
         //Get man-machine battle button control by id
         Button newGame = (Button) findViewById(R.id.new_game);
         //Get two-player button control by id
@@ -42,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
 //        Button netFight = (Button) findViewById(R.id.conn_fight);
         // Get the control button pf Tutorial by id
         Button netFight = (Button) findViewById(R.id.conn_fight);
-        // Get the control button of music by id
-        Button musicStart = (Button) findViewById(R.id.btn_start_music);
-        Button musicStop = (Button) findViewById(R.id.btn_stop_music);
+        // Get the control switch of music by id
+        Switch musicSwitch = (Switch) findViewById(R.id.switch_music);
+
 
         //Register the listener for the man-machine battle button
         newGame.setOnClickListener(new OnClickListener() {
@@ -105,7 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
+                editor.putBoolean("REM_ISCheck", false);
+                editor.putBoolean("AUTO_ISCHECK", false);
+                editor.apply();
+
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
             }
         });
 
@@ -128,51 +127,30 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, About2Activity.class));
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
             }
         });
 
-        //attaching onclicklistener to buttons of music
+        //attaching listener to switch of music service
         //Start background music service
-        musicStart.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startService(new Intent(MainActivity.this, BackMusicService.class));
-                Toast.makeText(MainActivity.this, "Music Service started.", Toast.LENGTH_LONG).show();
+        musicSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if (isChecked) {
+                    // If the switch button is on
+                    startService(new Intent(MainActivity.this, BackMusicService.class));
+                    // Show the switch button checked status as toast message
+                    Toast.makeText(MainActivity.this, "Music Service started.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    // If the switch button is off
+                    stopService(new Intent(MainActivity.this, BackMusicService.class));
+                    // Show the switch button checked status as toast message
+                    Toast.makeText(MainActivity.this, "Music Service stopped.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
-
-        //Stop background music service
-        musicStop.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                stopService(new Intent(MainActivity.this, BackMusicService.class));
-                Toast.makeText(MainActivity.this, "Music Service stopped.", Toast.LENGTH_LONG).show();
-            }
-        });
-
     }
-
-//    public AssetManager assetManager;
-//    public MediaPlayer playbgmRing() {
-//        MediaPlayer mediaPlayer = null;
-//        try {
-//            mediaPlayer = new MediaPlayer();
-//            assetManager = getAssets();
-//            AssetFileDescriptor fileDescriptor = assetManager.openFd("backgroundMusic.mp3");
-//            mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(),fileDescriptor.getStartOffset(),
-//                    fileDescriptor.getStartOffset());
-//            mediaPlayer.prepare();
-//            mediaPlayer.start();
-//            mediaPlayer.setLooping(true);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return mediaPlayer;
-//    }
-
-
 }

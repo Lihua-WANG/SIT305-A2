@@ -16,7 +16,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class About2Activity extends AppCompatActivity implements View.OnClickListener {
+public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView AboutAI, AboutFight, AboutBasic, AboutVideo;
     private ViewPager vp;
@@ -30,7 +30,7 @@ public class About2Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about2);
+        setContentView(R.layout.activity_about);
         initViews();
 
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);

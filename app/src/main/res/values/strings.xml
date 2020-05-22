@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">A2</string>
+    <string name="app_name">Go Bang</string>
     <string name="new_game">New Game</string>
     <string name="fight">Fight</string>
     <string name="fight_connection">Network Fight</string>
