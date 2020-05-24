@@ -7,5 +7,6 @@
 
     <dimen name="boardWidth">1px</dimen>
     <dimen name="anchorWidth">5px</dimen>
+    <dimen name="Assign_style_textSize14">14sp</dimen>
 
 </resources>

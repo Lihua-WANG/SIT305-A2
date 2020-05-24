@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="agreements">
+        <item>《注册服务协议》</item>
+        <item>《用户隐私协议》</item>
+        <item>《风险揭示书》</item>
+    </string-array>
+</resources>

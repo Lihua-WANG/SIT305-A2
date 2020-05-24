@@ -2,6 +2,8 @@ package com.example.a2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -35,19 +37,20 @@ public class FeedbackActivity extends AppCompatActivity {
         mContactEdit = findViewById(R.id.feedback_contact_edit);
         mContentEdit = findViewById(R.id.feedback_content_edit);
         mLeftBtn = findViewById(R.id.left_btn);
-        mRightBtn = findViewById(R.id.right_btn);
+        mRightBtn = findViewById(R.id.email_btn);
         mContentEdit.requestFocus();
 
         mLeftBtn.setVisibility(View.GONE);
-//        mRightBtn.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.setClass(FeedbackActivity.this, FeedbackRecordActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        mRightBtn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "wanglihua@deakin.edu.au", null));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback on Go Bang Application");
+                intent.putExtra(Intent.EXTRA_TEXT, "What I would like to give feedback about:");
+                startActivity(intent);
+            }
+        });
 
         mSubmitBtn = findViewById(R.id.submit_button);
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {

@@ -137,25 +137,25 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
      */
     private void changeTextColor(int position) {
         if (position == 0) {
-            AboutAI.setTextColor(Color.parseColor("#485607"));
-            AboutFight.setTextColor(Color.parseColor("#000000"));
-            AboutBasic.setTextColor(Color.parseColor("#000000"));
-            AboutVideo.setTextColor(Color.parseColor("#000000"));
-        } else if (position == 1) {
-            AboutAI.setTextColor(Color.parseColor("#000000"));
+            AboutAI.setTextColor(Color.parseColor("#F797CF56"));
             AboutFight.setTextColor(Color.parseColor("#485607"));
-            AboutBasic.setTextColor(Color.parseColor("#000000"));
-            AboutVideo.setTextColor(Color.parseColor("#000000"));
-        } else if (position == 2) {
-            AboutAI.setTextColor(Color.parseColor("#000000"));
-            AboutFight.setTextColor(Color.parseColor("#000000"));
             AboutBasic.setTextColor(Color.parseColor("#485607"));
-            AboutVideo.setTextColor(Color.parseColor("#000000"));
-        } else if (position == 3) {
-            AboutAI.setTextColor(Color.parseColor("#000000"));
-            AboutFight.setTextColor(Color.parseColor("#000000"));
-            AboutBasic.setTextColor(Color.parseColor("#000000"));
             AboutVideo.setTextColor(Color.parseColor("#485607"));
+        } else if (position == 1) {
+            AboutAI.setTextColor(Color.parseColor("#485607"));
+            AboutFight.setTextColor(Color.parseColor("#F797CF56"));
+            AboutBasic.setTextColor(Color.parseColor("#485607"));
+            AboutVideo.setTextColor(Color.parseColor("#485607"));
+        } else if (position == 2) {
+            AboutAI.setTextColor(Color.parseColor("#485607"));
+            AboutFight.setTextColor(Color.parseColor("#485607"));
+            AboutBasic.setTextColor(Color.parseColor("#F797CF56"));
+            AboutVideo.setTextColor(Color.parseColor("#485607"));
+        } else if (position == 3) {
+            AboutAI.setTextColor(Color.parseColor("#485607"));
+            AboutFight.setTextColor(Color.parseColor("#485607"));
+            AboutBasic.setTextColor(Color.parseColor("#485607"));
+            AboutVideo.setTextColor(Color.parseColor("#F797CF56"));
         }
     }
 }

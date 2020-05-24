@@ -28,7 +28,7 @@
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:background="@drawable/btn_dialog"
-            android:text="简单模式"
+            android:text="Easy Model"
             android:textColor="@android:color/white" />
 
         <Button
@@ -41,7 +41,7 @@
             android:layout_marginBottom="2dp"
             android:layout_weight="1"
             android:background="@drawable/btn_dialog"
-            android:text="困难模式"
+            android:text="Difficult Model"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

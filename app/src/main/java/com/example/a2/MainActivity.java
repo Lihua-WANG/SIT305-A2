@@ -103,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean("AUTO_ISCHECK", false);
                 editor.apply();
 
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
+                Intent intent_login = new Intent();
+                intent_login.setClass(MainActivity.this, LoginActivity.class);
+                intent_login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //关键的一句，将新的activity置为栈顶
+                startActivity(intent_login);
+                finish();
             }
         });
 

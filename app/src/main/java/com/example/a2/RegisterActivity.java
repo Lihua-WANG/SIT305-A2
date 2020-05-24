@@ -2,6 +2,7 @@ package com.example.a2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.os.Bundle;
 
 import com.example.a2.RegisterData.Code;
 import com.example.a2.RegisterData.DBOpenHelper;
+import com.example.a2.UrAgreementTextView;
+import com.example.a2.UrImageSpan;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,19 +32,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mEtRegisteractivityPassword2;
     private EditText mEtRegisteractivityPhonecodes;
     private ImageView mIvRegisteractivityShowcode;
+    private UrAgreementTextView mTvAgreement;
+    Context mcontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
         initView();
+
+        UrAgreementTextView urAgreementTextView = new UrAgreementTextView(mcontext);
 
         mDBOpenHelper = new DBOpenHelper(this);
 
         // Display the verification code as a picture
         mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
         realCode = Code.getInstance().getCode().toLowerCase();
+
+
     }
 
     private void initView() {
@@ -54,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mEtRegisteractivityPassword2 = findViewById(R.id.et_registeractivity_password2);
         mEtRegisteractivityPhonecodes = findViewById(R.id.et_registeractivity_phoneCodes);
         mIvRegisteractivityShowcode = findViewById(R.id.iv_registeractivity_showCode);
+        mTvAgreement = findViewById(R.id.tv_agreement);
 
         /**
          * There are three places you can click on the registration page
@@ -62,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mIvRegisteractivityBack.setOnClickListener(this);
         mIvRegisteractivityShowcode.setOnClickListener(this);
         mBtRegisteractivityRegister.setOnClickListener(this);
+        mTvAgreement.setAgreementClickListener((UrAgreementTextView.OnAgreementClickListener) this);
     }
 
     public void onClick(View view) {
@@ -75,7 +87,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
                 realCode = Code.getInstance().getCode().toLowerCase();
                 break;
-            case R.id.bt_registeractivity_register:    //Register button
+            case R.id.tv_agreement:
+                if ()
+                    case R.id.bt_registeractivity_register:    //Register button
                 // Get the username, password, and verification code entered by the user
                 String username = mEtRegisteractivityUsername.getText().toString().trim();
                 String password = mEtRegisteractivityPassword2.getText().toString().trim();

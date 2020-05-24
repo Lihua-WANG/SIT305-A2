@@ -43,6 +43,8 @@
     <string name="AboutBasic">Basic Function</string>
     <string name="AboutFight">Fight Model</string>
     <string name="AboutAI">AI Model</string>
+    <string name="agreement">我已阅读并同意《注册服务协议》，《用户隐私协议》与《风险揭示书》</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
