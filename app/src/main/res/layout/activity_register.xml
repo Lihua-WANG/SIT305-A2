@@ -46,6 +46,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:orientation="vertical">
+
         <!-- Enter the user name in the first EditText  box -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +66,9 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:hint="Please input username" />
+
         </LinearLayout>
+
         <!--Enter the password in the second text edit box-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,6 +90,7 @@
                 android:hint="Please input password"
                 android:inputType="textPassword" />
         </LinearLayout>
+
         <!-- The third text edit box, enter the password again -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,7 +111,9 @@
                 android:gravity="center_vertical"
                 android:hint="Please enter the password again"
                 android:inputType="textPassword" />
+
         </LinearLayout>
+
         <!-- Verification code -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,6 +121,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
             android:orientation="horizontal">
+
             <!-- Enter the verification code in the fourth text edit box -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,7 +152,9 @@
                     android:clickable="true"
                     android:onClick="onClick" />
             </LinearLayout>
+
         </LinearLayout>
+
         <!-- Register button -->
         <Button
             android:id="@+id/bt_registeractivity_register"
@@ -158,21 +167,39 @@
             android:text="Sign Up"
             android:textColor="#FFFFFF" />
 
-        <com.example.a2.PrivatePolicy.UrAgreementTextView
-            android:id="@+id/tv_registeractivity_agreement"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.2"
-            android:padding="14dp"
-            android:textSize="@dimen/Assign_style_textSize14"
-            app:agreementCheckedId="@drawable/ic_launcher"
-            app:agreementContext="@string/agreement"
-            app:agreementContextColor="@color/text_color_666"
-            app:agreementHintColor="@color/text_color_666"
-            app:agreementUnCheckedId="@drawable/btn_voice_on"
-            app:agreementsColor="@color/green"
-            app:agreementsId="@array/agreements"
-            app:isChecked="false" />
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已阅读并同意"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_xieyi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="隐私协议"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="和"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_yinsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="条件"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

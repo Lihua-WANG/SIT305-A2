@@ -8,4 +8,8 @@
     <color name="main_tab_text_color">#485607</color>
     <color name="text_color_666">#FF000000</color>
     <color name="green">#55830C</color>
+    <color name="colorBlack">#16100F</color>
+    <color name="colorGray">#878787</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorOrange">#516B35</color>
 </resources>

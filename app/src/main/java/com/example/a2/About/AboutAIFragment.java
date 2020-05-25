@@ -1,6 +1,5 @@
 package com.example.a2.About;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.a2.R;
-
-import java.io.InputStream;
-
 
 public class AboutAIFragment extends Fragment {
     View view;//定义view用来设置fragment的layout

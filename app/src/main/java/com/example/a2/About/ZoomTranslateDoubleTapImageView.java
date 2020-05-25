@@ -13,20 +13,20 @@ import android.view.ScaleGestureDetector;
 import java.lang.ref.WeakReference;
 
 /**
- * 支持手势缩放、平移和双击还原的ImageView
- */
+ * ImageView supporting gesture zoom, pan and double-click restoration
+ **/
 public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.AppCompatImageView
         implements ScaleGestureDetector.OnScaleGestureListener {
 
-    private ScaleGestureDetector scaleGestureDetector;//手势缩放
+    private ScaleGestureDetector scaleGestureDetector;//Gesture zoom
     /**
      * MSCALE_X  MSKEW_X    MTRANS_X
      * MKEW_Y    MSCALE_Y   MTRANS_Y
      * MPERSP_0  MPERSP_1   MPERSP_2
      */
-    private Matrix mMatrix;//缩放矩阵
-    private float maxScale = 4.0f;//最大缩放到原图的四倍
-    private float minScale = 0.5f;//最小缩放到原图的0.5倍
+    private Matrix mMatrix;//Scaling matrix
+    private float maxScale = 4.0f;//Maximum zoom to four times the original image
+    private float minScale = 0.5f;//Minimum zoom to 0.5 times of the original image
     private float lastX = 0, lastY = 0;
     private int lastPointerCount;
     private GestureDetector gestureDetector;
@@ -46,15 +46,15 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         init(context);
     }
 
-    //初始化参数
+    //Initialization parameters
     private void init(Context context) {
-        setScaleType(ScaleType.MATRIX);//允许imageview缩放
+        setScaleType(ScaleType.MATRIX);//Allow imageview zoom
         scaleGestureDetector = new ScaleGestureDetector(new WeakReference<Context>(context).get(),
                 new WeakReference<ZoomTranslateDoubleTapImageView>(this).get());
         mMatrix = new Matrix();
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
-            public boolean onDoubleTap(MotionEvent e) {//双击图片还原
+            public boolean onDoubleTap(MotionEvent e) {//Double-click the picture to restore
                 if (getPreScale() != 1.0f) {
                     ZoomTranslateDoubleTapImageView.this.postDelayed(new Runnable() {
                         @Override
@@ -72,19 +72,20 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
     }
 
     @Override
-    public boolean onScale(ScaleGestureDetector detector) {//OnScaleGestureListener里的方法
+    public boolean onScale(ScaleGestureDetector detector) {//The function from OnScaleGestureListener
         if (getDrawable() == null) {
             return true;
         }
-        //获取本次的缩放值
+        //Get the current zoom value
         float scale = detector.getScaleFactor();
         Log.i("lihua", "scaleFactor = " + scale);
         float preScale = getPreScale();
         Log.i("lihua", "preScale = " + preScale);
         if (preScale * scale < maxScale &&
-                preScale * scale > minScale) {//preScale * scale可以计算出此次缩放执行的话，缩放值是多少
-
-            //detector.getFocusX()缩放手势中心的x坐标，detector.getFocusY()y坐标
+                preScale * scale > minScale) {
+            //preScale * scale Can calculate the zoom value if this zoom is executed
+            //detector.getFocusX() The x coordinate of the zoom gesture center，
+            // detector.getFocusY() y coordinate
 //            mMatrix.postScale(scale, scale, detector.getFocusX(), detector.getFocusY());
             mMatrix.postScale(scale, scale, getWidth() / 2, getHeight() / 2);
             setImageMatrix(mMatrix);
@@ -94,12 +95,14 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
     }
 
     @Override
-    public boolean onScaleBegin(ScaleGestureDetector detector) {//OnScaleGestureListener里的方法，缩放开始
-        return true;//必须返回true才有效果
+    public boolean onScaleBegin(ScaleGestureDetector detector) {
+        //The function from OnScaleGestureListener，Zoom start
+        return true;//Must return true to have effect
     }
 
     @Override
-    public void onScaleEnd(ScaleGestureDetector detector) {//OnScaleGestureListener里的方法，缩放结束
+    public void onScaleEnd(ScaleGestureDetector detector) {
+        //The function from OnScaleGestureListener，Zoom ened
     }
 
     @Override
@@ -153,7 +156,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         return true;
     }
 
-    //获取目前一共缩放了多少
+    //Get the current total zoom
     private float getPreScale() {
         float[] matrix = new float[9];
         mMatrix.getValues(matrix);
@@ -174,7 +177,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         return rect;
     }
 
-    //缩小的时候让图片居中
+    //Center the picture when zooming out
     private void makeDrawableCenter() {
 
         RectF rect = getMatrixRectF();
@@ -184,7 +187,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
 
         float dx = 0, dy = 0;
 
-        // 如果宽或高大于屏幕，则控制范围
+        // If the width or height is greater than the screen, the control range
         if (rect.width() >= width) {
             if (rect.left > 0) {
                 dx = -rect.left;
@@ -203,7 +206,10 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         }
 
         if (rect.width() <= width) {
-            dx = width / 2 - (rect.right - rect.width() / 2);//控件中心点横坐标减去图片中心点横坐标为X方向应移动距离
+            // The horizontal coordinate of the center point of the control
+            // minus the horizontal coordinate of the center point of the picture is
+            // the distance that should be moved in the X direction
+            dx = width / 2 - (rect.right - rect.width() / 2);
         }
         if (rect.height() <= height) {
             dy = height / 2 - (rect.bottom - rect.height() / 2);
