@@ -1,4 +1,4 @@
-package com.example.a2;
+package com.example.a2.About;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,6 +15,8 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.example.a2.R;
 
 public class AboutVideoFragment extends Fragment {
     View view;//定义view用来设置fragment的layout

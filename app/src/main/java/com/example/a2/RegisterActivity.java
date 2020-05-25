@@ -16,8 +16,7 @@ import android.os.Bundle;
 
 import com.example.a2.RegisterData.Code;
 import com.example.a2.RegisterData.DBOpenHelper;
-import com.example.a2.UrAgreementTextView;
-import com.example.a2.UrImageSpan;
+import com.example.a2.PrivatePolicy.UrAgreementTextView;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,25 +31,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mEtRegisteractivityPassword2;
     private EditText mEtRegisteractivityPhonecodes;
     private ImageView mIvRegisteractivityShowcode;
-    private UrAgreementTextView mTvAgreement;
-    Context mcontext;
+    private UrAgreementTextView mTvRegisteractivityAgreement;
+    private Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
         initView();
-
-        UrAgreementTextView urAgreementTextView = new UrAgreementTextView(mcontext);
 
         mDBOpenHelper = new DBOpenHelper(this);
 
         // Display the verification code as a picture
         mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
         realCode = Code.getInstance().getCode().toLowerCase();
-
+        // Display the agreement
+        mTvRegisteractivityAgreement.setAgreement();
 
     }
 
@@ -64,7 +62,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mEtRegisteractivityPassword2 = findViewById(R.id.et_registeractivity_password2);
         mEtRegisteractivityPhonecodes = findViewById(R.id.et_registeractivity_phoneCodes);
         mIvRegisteractivityShowcode = findViewById(R.id.iv_registeractivity_showCode);
-        mTvAgreement = findViewById(R.id.tv_agreement);
+        mTvRegisteractivityAgreement = findViewById(R.id.tv_registeractivity_agreement);
+
 
         /**
          * There are three places you can click on the registration page
@@ -73,7 +72,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mIvRegisteractivityBack.setOnClickListener(this);
         mIvRegisteractivityShowcode.setOnClickListener(this);
         mBtRegisteractivityRegister.setOnClickListener(this);
-        mTvAgreement.setAgreementClickListener((UrAgreementTextView.OnAgreementClickListener) this);
+//        mTvRegisteractivityAgreement.setAgreementClickListener((UrAgreementTextView.OnAgreementClickListener) this);
+//        mTvRegisteractivityAgreement.setAgreementClickListener(new UrAgreementTextView.OnAgreementClickListener() {
+//            @Override
+//            public void clickListener(String tag, String clickText, boolean isChecked) {
+//
+//                Toast.makeText(mContext, tag + clickText + isChecked, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public void onClick(View view) {
@@ -87,9 +93,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
                 realCode = Code.getInstance().getCode().toLowerCase();
                 break;
-            case R.id.tv_agreement:
-                if ()
-                    case R.id.bt_registeractivity_register:    //Register button
+            case R.id.bt_registeractivity_register:    //Register button
                 // Get the username, password, and verification code entered by the user
                 String username = mEtRegisteractivityUsername.getText().toString().trim();
                 String password = mEtRegisteractivityPassword2.getText().toString().trim();
@@ -110,6 +114,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Toast.makeText(this, "Incomplete information, registration failed", Toast.LENGTH_SHORT).show();
                 }
                 break;
+//            case R.id.tv_registeractivity_agreement:
+//
+//                break;
         }
     }
 }

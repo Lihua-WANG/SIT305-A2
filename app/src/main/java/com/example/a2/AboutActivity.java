@@ -13,6 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 
+import com.example.a2.About.AboutAIFragment;
+import com.example.a2.About.AboutBasicFragment;
+import com.example.a2.About.AboutFightFragment;
+import com.example.a2.About.AboutVideoFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

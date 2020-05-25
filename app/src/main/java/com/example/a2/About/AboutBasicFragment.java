@@ -1,4 +1,4 @@
-package com.example.a2;
+package com.example.a2.About;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.a2.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AboutAIFragment#newInstance} factory method to
+ * Use the {@link AboutBasicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AboutAIFragment extends Fragment {
+public class AboutBasicFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -24,7 +26,7 @@ public class AboutAIFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AboutAIFragment() {
+    public AboutBasicFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class AboutAIFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutAIFragment.
+     * @return A new instance of fragment AboutBasicFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AboutAIFragment newInstance(String param1, String param2) {
-        AboutAIFragment fragment = new AboutAIFragment();
+    public static AboutBasicFragment newInstance(String param1, String param2) {
+        AboutBasicFragment fragment = new AboutBasicFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class AboutAIFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_a_i, container, false);
+        return inflater.inflate(R.layout.fragment_about_basic, container, false);
     }
 }

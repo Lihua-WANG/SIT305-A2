@@ -1,4 +1,4 @@
-package com.example.a2;
+package com.example.a2.PrivatePolicy;
 
 
 import android.content.Context;

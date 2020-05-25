@@ -1,4 +1,4 @@
-package com.example.a2;
+package com.example.a2.PrivatePolicy;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -14,6 +14,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatTextView;
+
+import com.example.a2.R;
 
 /**
  * 用户注册协议、用户隐私协议条款控件
