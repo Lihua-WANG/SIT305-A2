@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "252853939211",
+    "firebase_url": "https://sit305-a2.firebaseio.com",
+    "project_id": "sit305-a2",
+    "storage_bucket": "sit305-a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252853939211:android:f7a7170dfc0143c0d76b0e",
+        "android_client_info": {
+          "package_name": "com.example.a2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252853939211-sen5jkikqq0t3blc8g216lhe03hu9e9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ABb3SapvQEABMGiR3I99hbqqCsU8mi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252853939211-sen5jkikqq0t3blc8g216lhe03hu9e9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

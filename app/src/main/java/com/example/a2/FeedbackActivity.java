@@ -1,11 +1,13 @@
 package com.example.a2;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -15,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.client.Firebase;
+
 public class FeedbackActivity extends AppCompatActivity {
 
     private EditText mContactEdit = null;
@@ -22,12 +26,14 @@ public class FeedbackActivity extends AppCompatActivity {
     private ImageView mLeftBtn = null;
     private ImageView mRightBtn = null;
     private Button mSubmitBtn = null;
+    private Firebase firebase = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         initView();
+
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.RESULT_UNCHANGED_SHOWN,
                 InputMethodManager.HIDE_NOT_ALWAYS);
@@ -38,8 +44,15 @@ public class FeedbackActivity extends AppCompatActivity {
         mContentEdit = findViewById(R.id.feedback_content_edit);
         mLeftBtn = findViewById(R.id.left_btn);
         mRightBtn = findViewById(R.id.email_btn);
-        mContentEdit.requestFocus();
+        mSubmitBtn = findViewById(R.id.submit_button);
+        Firebase.setAndroidContext(this);
 
+        String UniqueID =
+                Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                        Settings.Secure.ANDROID_ID);
+        firebase = new Firebase("https://sit305-a2.firebaseio.com/Users" + UniqueID);
+
+        mContentEdit.requestFocus();
         mLeftBtn.setVisibility(View.GONE);
         mRightBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -52,23 +65,40 @@ public class FeedbackActivity extends AppCompatActivity {
             }
         });
 
-        mSubmitBtn = findViewById(R.id.submit_button);
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                String content = mContentEdit.getText().toString().trim();
-                String contact = mContactEdit.getText().toString().trim();
-                if (content.equals("")) {
+                final String content = mContentEdit.getText().toString().trim();
+                final String contact = mContactEdit.getText().toString().trim();
+
+                Firebase child_content = firebase.child("Feedback Content");
+                child_content.setValue(content);
+                if (content.isEmpty()) {
                     Toast.makeText(FeedbackActivity.this, R.string.request_content, Toast.LENGTH_SHORT).show();
-                    return;
+                    mContentEdit.setError("This is an required field!");
+                } else {
+                    mContentEdit.setError(null);
+                    mSubmitBtn.setEnabled(true);
                 }
+
+                Firebase child_contact = firebase.child("Feedback Contact");
+                child_contact.setValue(contact);
+                if (contact.isEmpty()) {
+                    Toast.makeText(FeedbackActivity.this, R.string.request_contact, Toast.LENGTH_SHORT).show();
+                    mContentEdit.setError("This is an required field!");
+                } else {
+                    mContentEdit.setError(null);
+                    mSubmitBtn.setEnabled(true);
+                }
+
                 SendFeedbackTask task = new SendFeedbackTask(FeedbackActivity.this, content, contact);
                 task.execute("");
-
             }
         });
+
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class SendFeedbackTask extends AsyncTask<Object, Object, Object> {
 
         private Context mContext = null;
@@ -84,16 +114,17 @@ public class FeedbackActivity extends AppCompatActivity {
 
         @Override
         protected Object doInBackground(Object... arg0) {
-            return Integer.valueOf(new FeedbackAction(mContext)
-                    .sendFeedbackMessage(mContent, mContact));
+            return new FeedbackAction(mContext)
+                    .sendFeedbackMessage();
         }
 
+        @SuppressLint("ShowToast")
         @Override
         protected void onPostExecute(Object result) {
             if (mProgDialog != null) {
                 mProgDialog.dismiss();
             }
-            int resultCode = ((Integer) result).intValue();
+            int resultCode = (Integer) result;
             if (resultCode == 0) {
                 Toast.makeText(FeedbackActivity.this,
                         R.string.feedback_success, Toast.LENGTH_SHORT);
@@ -102,7 +133,6 @@ public class FeedbackActivity extends AppCompatActivity {
                 Toast.makeText(FeedbackActivity.this, R.string.feedback_failed,
                         Toast.LENGTH_SHORT);
             }
-            return;
         }
 
         @Override

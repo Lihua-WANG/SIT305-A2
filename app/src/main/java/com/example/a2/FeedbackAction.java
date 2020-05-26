@@ -13,11 +13,9 @@ public class FeedbackAction {
     }
 
     /**
-     * @param content
-     * @param contact
      * @return
      */
-    public int sendFeedbackMessage(String content, String contact) {
+    public int sendFeedbackMessage() {
         return SUCCESS;
     }
 

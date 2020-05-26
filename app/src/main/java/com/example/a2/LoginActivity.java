@@ -55,9 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
         initView();
 
-//        rem_isCheck = mCheckRemember.isChecked();
-//        auto_isCheck = mCheckAutoLogin.isChecked();
-
         mDBOpenHelper = new DBOpenHelper(this);
 
         restoreInfo();

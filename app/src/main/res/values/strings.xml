@@ -34,6 +34,7 @@
     <string name="feedback_failed">Failed sending!</string>
     <string name="waiting">Processing, please wait...</string>
     <string name="request_content">Please input your feedback</string>
+    <string name="request_contact">Please input your contact</string>
     <string name="submit">Submit</string>
     <string name="feedback_contact_hint">Contact number</string>
     <string name="feedback_content_hint">Please input your feedback</string>
@@ -43,7 +44,6 @@
     <string name="AboutBasic">Basic Function</string>
     <string name="AboutFight">Fight Model</string>
     <string name="AboutAI">AI Model</string>
-    <string name="agreement">我已阅读并同意《注册服务协议》，《用户隐私协议》与《风险揭示书》</string>
     <string name="users_note">User Note</string>
     <string name="privacy_tips">Welcome to PrivacyView! In order to protect your privacy and use security, please read our Terms of Use and Privacy Policy carefully. Do not use this app until you have confirmed your full understanding and agreement. Thank you!</string>
     <string name="privacy_exit">Exit</string>
@@ -51,11 +51,11 @@
     <string name="confirmed">The user note has been confirmed.</string>
     <string name="privacy_tips_key1">Terms of Use</string>
     <string name="privacy_tips_key2">Privacy Policy</string>
+    <string name="opt_terms">Terms of Use</string>
+    <string name="opt_privacy">Privacy Policy</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="opt_terms">Terms of Use</string>
-    <string name="opt_privacy">Privacy Policy</string>
 
 
 </resources>

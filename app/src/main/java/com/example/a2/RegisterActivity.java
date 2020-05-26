@@ -202,7 +202,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-
                 Toast.makeText(RegisterActivity.this, getString(R.string.confirmed), Toast.LENGTH_SHORT).show();
             }
         });

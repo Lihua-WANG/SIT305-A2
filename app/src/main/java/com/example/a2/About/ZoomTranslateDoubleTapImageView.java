@@ -85,7 +85,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
                 preScale * scale > minScale) {
             //preScale * scale Can calculate the zoom value if this zoom is executed
             //detector.getFocusX() The x coordinate of the zoom gesture center，
-            // detector.getFocusY() y coordinate
+            //detector.getFocusY() y coordinate
 //            mMatrix.postScale(scale, scale, detector.getFocusX(), detector.getFocusY());
             mMatrix.postScale(scale, scale, getWidth() / 2, getHeight() / 2);
             setImageMatrix(mMatrix);
@@ -102,7 +102,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
-        //The function from OnScaleGestureListener，Zoom ened
+        //The function from OnScaleGestureListener，Zoom ended
     }
 
     @Override
