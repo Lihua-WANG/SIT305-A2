@@ -1,5 +1,6 @@
 package com.example.a2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,6 +24,10 @@ import com.example.a2.game.Player;
 
 import java.io.IOException;
 
+/**
+ * This is two-player battle mode,
+ * which needs two users play Go Bang on the same chessboard(mobile).
+ */
 
 public class FightGameActivity extends Activity implements OnClickListener {
 
@@ -44,6 +49,7 @@ public class FightGameActivity extends Activity implements OnClickListener {
     private Button restart;
     private Button rollback;
 
+    @SuppressLint("HandlerLeak")
     private Handler mRefreshHandler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -69,8 +75,6 @@ public class FightGameActivity extends Activity implements OnClickListener {
                     break;
             }
         }
-
-        ;
     };
 
     @Override
@@ -82,13 +86,13 @@ public class FightGameActivity extends Activity implements OnClickListener {
     }
 
     private void initViews() {
-        mGameView = (GameView) findViewById(R.id.game_view);
-        mBlackWin = (TextView) findViewById(R.id.black_win);
-        mBlackActive = (ImageView) findViewById(R.id.black_active);
-        mWhiteWin = (TextView) findViewById(R.id.white_win);
-        mWhiteActive = (ImageView) findViewById(R.id.white_active);
-        restart = (Button) findViewById(R.id.restart);
-        rollback = (Button) findViewById(R.id.rollback);
+        mGameView = findViewById(R.id.game_view);
+        mBlackWin = findViewById(R.id.black_win);
+        mBlackActive = findViewById(R.id.black_active);
+        mWhiteWin = findViewById(R.id.white_win);
+        mWhiteActive = findViewById(R.id.white_active);
+        restart = findViewById(R.id.restart);
+        rollback = findViewById(R.id.rollback);
         restart.setOnClickListener(this);
         rollback.setOnClickListener(this);
     }
@@ -157,7 +161,6 @@ public class FightGameActivity extends Activity implements OnClickListener {
             default:
                 break;
         }
-
     }
 
     public AssetManager assetManager;

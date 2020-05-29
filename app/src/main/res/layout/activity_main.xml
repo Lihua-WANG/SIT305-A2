@@ -20,11 +20,11 @@
         tools:ignore="UselessParent">
 
         <Button
-            android:id="@+id/new_game"
+            android:id="@+id/single"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:background="@drawable/btn_bg"
-            android:text="@string/new_game"
+            android:text="@string/single_game"
             android:textColor="@android:color/white" />
 
         <Button
@@ -32,21 +32,21 @@
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:background="@drawable/btn_bg"
-            android:text="@string/fight"
+            android:text="@string/two_player_fight"
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/conn_fight"
+            android:id="@+id/about"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:background="@drawable/btn_bg"
-            android:text="@string/fight_connection"
+            android:text="@string/about"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_main_logout"
+        android:id="@+id/logout"
         android:layout_width="171dp"
         android:layout_height="67dp"
         android:layout_marginBottom="33dp"

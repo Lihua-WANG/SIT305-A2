@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 
-import com.example.a2.About.AboutAIFragment;
+import com.example.a2.About.AboutSingleFragment;
 import com.example.a2.About.AboutBasicFragment;
 import com.example.a2.About.AboutFightFragment;
 import com.example.a2.About.AboutVideoFragment;
@@ -21,11 +21,15 @@ import com.example.a2.About.AboutVideoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Use ViewPager + Fragment to implement the sliding menu Tab effect
+ */
+
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView AboutAI, AboutFight, AboutBasic, AboutVideo;
     private ViewPager vp;
-    private AboutAIFragment aboutAIFragment;
+    private AboutSingleFragment aboutSingleFragment;
     private AboutFightFragment aboutFightFragment;
     private AboutBasicFragment aboutBasicFragment;
     private AboutVideoFragment aboutVideoFragment;
@@ -39,67 +43,68 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         initViews();
 
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-        vp.setOffscreenPageLimit(2);//ViewPager的缓存为2帧
+        vp.setOffscreenPageLimit(2); // ViewPager's cache is 2 frames
         vp.setAdapter(mFragmentAdapter);
-        vp.setCurrentItem(0);//初始设置ViewPager选中第一帧
-        AboutAI.setTextColor(Color.parseColor("#485607"));
+        vp.setCurrentItem(0); // Initially set ViewPager to select the first frame
+        AboutAI.setTextColor(Color.parseColor("#55830C"));
 
-        //ViewPager的监听事件
+        // ViewPager monitoring events
         vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-                /*此方法在页面被选中时调用*/
+                /*This method is called when the page is selected*/
                 changeTextColor(position);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                /*此方法是在状态改变的时候调用，其中arg0这个参数有三种状态（0，1，2）。
-                arg0==1的时辰默示正在滑动，
-                arg0==2的时辰默示滑动完毕了，
-                arg0==0的时辰默示什么都没做。*/
+                /*This method is called when the state changes,
+                where the arg0 parameter has three states (0, 1, 2).
+                arg0==1 implies is sliding,
+                arg0==2 implies that the sliding is finished
+                arg0==0 implies that nothing is done.*/
             }
         });
     }
 
     /**
-     * 初始化布局View
+     * Initialize the layout View
      */
     private void initViews() {
-        AboutAI = (TextView) findViewById(R.id.AboutAI);
-        AboutFight = (TextView) findViewById(R.id.AboutFight);
-        AboutBasic = (TextView) findViewById(R.id.AboutBasic);
-        AboutVideo = (TextView) findViewById(R.id.AboutVideo);
+        AboutAI = findViewById(R.id.AboutSingle);
+        AboutFight = findViewById(R.id.AboutFight);
+        AboutBasic = findViewById(R.id.AboutBasic);
+        AboutVideo = findViewById(R.id.AboutVideo);
 
         AboutAI.setOnClickListener(this);
         AboutFight.setOnClickListener(this);
         AboutBasic.setOnClickListener(this);
         AboutVideo.setOnClickListener(this);
 
-        vp = (ViewPager) findViewById(R.id.mainViewPager);
-        aboutAIFragment = new AboutAIFragment();
+        vp = findViewById(R.id.mainViewPager);
+        aboutSingleFragment = new AboutSingleFragment();
         aboutFightFragment = new AboutFightFragment();
         aboutBasicFragment = new AboutBasicFragment();
         aboutVideoFragment = new AboutVideoFragment();
-        //给FragmentList添加数据
-        mFragmentList.add(aboutAIFragment);
+
+        // Add data to FragmentList
+        mFragmentList.add(aboutSingleFragment);
         mFragmentList.add(aboutFightFragment);
         mFragmentList.add(aboutBasicFragment);
         mFragmentList.add(aboutVideoFragment);
     }
 
     /**
-     * 点击头部Text 动态修改ViewPager的内容
+     * Click the head Text to dynamically modify the content of ViewPager
      */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.AboutAI:
+            case R.id.AboutSingle:
                 vp.setCurrentItem(0, true);
                 break;
             case R.id.AboutFight:
@@ -136,31 +141,31 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
-     * 由ViewPager的滑动修改头部导航Text的颜色
+     * Modify the color of the navigation Text by sliding the ViewPager
      *
      * @param position
      */
     private void changeTextColor(int position) {
         if (position == 0) {
-            AboutAI.setTextColor(Color.parseColor("#F797CF56"));
-            AboutFight.setTextColor(Color.parseColor("#485607"));
-            AboutBasic.setTextColor(Color.parseColor("#485607"));
-            AboutVideo.setTextColor(Color.parseColor("#485607"));
+            AboutAI.setTextColor(Color.parseColor("#55830C"));
+            AboutFight.setTextColor(Color.parseColor("#FF000000"));
+            AboutBasic.setTextColor(Color.parseColor("#FF000000"));
+            AboutVideo.setTextColor(Color.parseColor("#FF000000"));
         } else if (position == 1) {
-            AboutAI.setTextColor(Color.parseColor("#485607"));
-            AboutFight.setTextColor(Color.parseColor("#F797CF56"));
-            AboutBasic.setTextColor(Color.parseColor("#485607"));
-            AboutVideo.setTextColor(Color.parseColor("#485607"));
+            AboutAI.setTextColor(Color.parseColor("#FF000000"));
+            AboutFight.setTextColor(Color.parseColor("#55830C"));
+            AboutBasic.setTextColor(Color.parseColor("#FF000000"));
+            AboutVideo.setTextColor(Color.parseColor("#FF000000"));
         } else if (position == 2) {
-            AboutAI.setTextColor(Color.parseColor("#485607"));
-            AboutFight.setTextColor(Color.parseColor("#485607"));
-            AboutBasic.setTextColor(Color.parseColor("#F797CF56"));
-            AboutVideo.setTextColor(Color.parseColor("#485607"));
+            AboutAI.setTextColor(Color.parseColor("#FF000000"));
+            AboutFight.setTextColor(Color.parseColor("#FF000000"));
+            AboutBasic.setTextColor(Color.parseColor("#55830C"));
+            AboutVideo.setTextColor(Color.parseColor("#FF000000"));
         } else if (position == 3) {
-            AboutAI.setTextColor(Color.parseColor("#485607"));
-            AboutFight.setTextColor(Color.parseColor("#485607"));
-            AboutBasic.setTextColor(Color.parseColor("#485607"));
-            AboutVideo.setTextColor(Color.parseColor("#F797CF56"));
+            AboutAI.setTextColor(Color.parseColor("#FF000000"));
+            AboutFight.setTextColor(Color.parseColor("#FF000000"));
+            AboutBasic.setTextColor(Color.parseColor("#FF000000"));
+            AboutVideo.setTextColor(Color.parseColor("#55830C"));
         }
     }
 }

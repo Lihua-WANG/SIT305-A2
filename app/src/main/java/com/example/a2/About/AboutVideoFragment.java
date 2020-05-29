@@ -22,7 +22,7 @@ public class AboutVideoFragment extends Fragment {
     View view;//定义view用来设置fragment的layout
 
     private static final String VIDEO_SAMPLE =
-            "https://developers.google.com/training/images/tacoma_narrows.mp4";
+            "https://www.youtube.com/watch?v=i_jrqOcCM4c";
 
     private VideoView mVideoView;
     private TextView mBufferingTextView;

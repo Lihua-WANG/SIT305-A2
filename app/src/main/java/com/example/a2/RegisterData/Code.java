@@ -7,16 +7,20 @@ import android.graphics.Paint;
 
 import java.util.Random;
 
+/**
+ * Validation code Generation class
+ */
+
 public class Code {
 
     /**
-     * 随机数数组
-     * 去除了易混淆的 数字 0 和 字母 o O
-     * 数字 1 和 字母 i I l L
-     * 数字 6 和 字母 b
-     * 数字 9 和 字母 q
-     * 字母 c C 和 G
-     * 字母 t （经常和随机线混在一起看不清）
+     * Array of random numbers
+     * Removed confusing numbers 0 and letters o O
+     * Number 1 and letters i I l L
+     * Number 6 and letter b
+     * Number 9 and letter q
+     * Letter c C and G
+     * Letter t (often mixed with random lines and cannot see clearly)
      */
     private static final char[] CHARS = {
             '2', '3', '4', '5', '7', '8',
@@ -35,34 +39,34 @@ public class Code {
     }
 
     //default settings
-    //验证码默认随机数的个数
+    // The default number of verification codes
     private static final int DEFAULT_CODE_LENGTH = 4;
-    //默认字体大小
+    // Default font size
     private static final int DEFAULT_FONT_SIZE = 25;
-    //默认线条的条数
+    // Number of default lines
     private static final int DEFAULT_LINE_NUMBER = 5;
-    //padding值
+    // value of padding
     private static final int BASE_PADDING_LEFT = 10, RANGE_PADDING_LEFT = 15, BASE_PADDING_TOP = 15, RANGE_PADDING_TOP = 20;
-    //验证码的默认宽高
+    // The default width and height of the verification code
     private static final int DEFAULT_WIDTH = 100, DEFAULT_HEIGHT = 40;
 
-    //settings decided by the layout xml
-    //canvas width and height
+    // settings decided by the layout xml
+    // canvas width and height
     private int width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT;
 
-    //random word space and pading_top
+    // random word space and pading_top
     private int base_padding_left = BASE_PADDING_LEFT, range_padding_left = RANGE_PADDING_LEFT,
             base_padding_top = BASE_PADDING_TOP, range_padding_top = RANGE_PADDING_TOP;
 
-    //number of chars, lines; font size
+    // number of chars, lines; font size
     private int codeLength = DEFAULT_CODE_LENGTH, line_number = DEFAULT_LINE_NUMBER, font_size = DEFAULT_FONT_SIZE;
 
-    //variables
+    // variables
     private String code;
     private int padding_left, padding_top;
     private Random random = new Random();
 
-    //验证码图片
+    // verification code image
     public Bitmap createBitmap() {
         padding_left = 0;
 
@@ -75,20 +79,19 @@ public class Code {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setTextSize(font_size);
-        //画验证码
+        // Draw verification code
         for (int i = 0; i < code.length(); i++) {
             randomTextStyle(paint);
             randomPadding();
             c.drawText(code.charAt(i) + "", padding_left, padding_top, paint);
         }
-        //画线条
+        // Line drawing
         for (int i = 0; i < line_number; i++) {
             drawLine(c, paint);
         }
 
-//        c.save( Canvas.ALL_SAVE_FLAG );//保存
-        c.save();//保存
-        c.restore();//
+        c.save(); // save
+        c.restore();
         return bp;
     }
 
@@ -96,7 +99,7 @@ public class Code {
         return code;
     }
 
-    //生成验证码
+    // Generate verification code
     private String createCode() {
         StringBuilder buffer = new StringBuilder();
         for (int i = 0; i < codeLength; i++) {
@@ -105,7 +108,7 @@ public class Code {
         return buffer.toString();
     }
 
-    //画干扰线
+    // Draw interference lines
     private void drawLine(Canvas canvas, Paint paint) {
         int color = randomColor();
         int startX = random.nextInt(width);
@@ -117,7 +120,7 @@ public class Code {
         canvas.drawLine(startX, startY, stopX, stopY, paint);
     }
 
-    //生成随机颜色
+    // Generate random colors
     private int randomColor() {
         return randomColor(1);
     }
@@ -129,19 +132,20 @@ public class Code {
         return Color.rgb(red, green, blue);
     }
 
-    //随机生成文字样式，颜色，粗细，倾斜度
+    // Randomly generate text style, color, thickness, and slope
     private void randomTextStyle(Paint paint) {
         int color = randomColor();
         paint.setColor(color);
-        paint.setFakeBoldText(random.nextBoolean());  //true为粗体，false为非粗体
+        paint.setFakeBoldText(random.nextBoolean()); // true for bold, false for non-bold
         float skewX = random.nextInt(11) / 10;
         skewX = random.nextBoolean() ? skewX : -skewX;
-        paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
-        //paint.setUnderlineText(true); //true为下划线，false为非下划线
-        //paint.setStrikeThruText(true); //true为删除线，false为非删除线
+        // Float type parameter, negative number means right slant, integer left slant
+        paint.setTextSkewX(skewX);
+        //paint.setUnderlineText(true); //true is underlined, false is not underlined
+        //paint.setStrikeThruText(true); //true for strikethrough and false for strikethrough
     }
 
-    //随机生成padding值
+    // Generate padding values randomly
     private void randomPadding() {
         padding_left += base_padding_left + random.nextInt(range_padding_left);
         padding_top = base_padding_top + random.nextInt(range_padding_top);

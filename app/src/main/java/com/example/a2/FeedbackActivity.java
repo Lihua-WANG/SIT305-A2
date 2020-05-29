@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +17,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.client.Firebase;
+
+/**
+ * Build feedback activity which can seed feedback massage to firebase
+ * or directly create an email to developer
+ */
 
 public class FeedbackActivity extends AppCompatActivity {
 
@@ -33,10 +37,6 @@ public class FeedbackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         initView();
-
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.RESULT_UNCHANGED_SHOWN,
-                InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     private void initView() {
@@ -47,6 +47,7 @@ public class FeedbackActivity extends AppCompatActivity {
         mSubmitBtn = findViewById(R.id.submit_button);
         Firebase.setAndroidContext(this);
 
+        // Define data structure in firebase
         String UniqueID =
                 Settings.Secure.getString(getApplicationContext().getContentResolver(),
                         Settings.Secure.ANDROID_ID);
@@ -54,6 +55,9 @@ public class FeedbackActivity extends AppCompatActivity {
 
         mContentEdit.requestFocus();
         mLeftBtn.setVisibility(View.GONE);
+
+        // Call mailbox application to send email which has defined
+        // receiver and message title and some content.
         mRightBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -65,6 +69,7 @@ public class FeedbackActivity extends AppCompatActivity {
             }
         });
 
+        // Require users only can submit feedback when complete content and contact field.
         mSubmitBtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -85,9 +90,9 @@ public class FeedbackActivity extends AppCompatActivity {
                 child_contact.setValue(contact);
                 if (contact.isEmpty()) {
                     Toast.makeText(FeedbackActivity.this, R.string.request_contact, Toast.LENGTH_SHORT).show();
-                    mContentEdit.setError("This is an required field!");
+                    mContactEdit.setError("This is an required field!");
                 } else {
-                    mContentEdit.setError(null);
+                    mContactEdit.setError(null);
                     mSubmitBtn.setEnabled(true);
                 }
 
@@ -95,9 +100,10 @@ public class FeedbackActivity extends AppCompatActivity {
                 task.execute("");
             }
         });
-
     }
 
+    // When processing feedback message sending,
+    // AsyncTask do background operation on background thread and update on main thread.
     @SuppressLint("StaticFieldLeak")
     private class SendFeedbackTask extends AsyncTask<Object, Object, Object> {
 
@@ -113,9 +119,8 @@ public class FeedbackActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Object doInBackground(Object... arg0) {
-            return new FeedbackAction(mContext)
-                    .sendFeedbackMessage();
+        protected Object doInBackground(Object... objects) {
+            return null;
         }
 
         @SuppressLint("ShowToast")
@@ -123,15 +128,6 @@ public class FeedbackActivity extends AppCompatActivity {
         protected void onPostExecute(Object result) {
             if (mProgDialog != null) {
                 mProgDialog.dismiss();
-            }
-            int resultCode = (Integer) result;
-            if (resultCode == 0) {
-                Toast.makeText(FeedbackActivity.this,
-                        R.string.feedback_success, Toast.LENGTH_SHORT);
-                //FeedbackActivity.this.finish();
-            } else {
-                Toast.makeText(FeedbackActivity.this, R.string.feedback_failed,
-                        Toast.LENGTH_SHORT);
             }
         }
 
@@ -143,6 +139,5 @@ public class FeedbackActivity extends AppCompatActivity {
             mProgDialog.setCancelable(false);
             mProgDialog.show();
         }
-
     }
 }

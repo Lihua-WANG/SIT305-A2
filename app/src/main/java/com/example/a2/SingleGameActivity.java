@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a2.game.ComputerAI;
-import com.example.a2.game.ComputerAI2;
 import com.example.a2.game.Coordinate;
 import com.example.a2.game.Game;
 import com.example.a2.game.GameConstants;
@@ -31,14 +30,13 @@ import java.io.IOException;
 
 public class SingleGameActivity extends Activity implements OnClickListener {
     private static final String TAG = "SingleGameActivity";
-    public SingleGameActivity renjiGameAty = this;
+    public SingleGameActivity singleGameAty = this;
     GameView mGameView = null;
 
     Game mGame;
     Player me;
     Player computer;
     ComputerAI ai;
-    ComputerAI2 ai2;
 
     // Victory
     private TextView mBlackWin;
@@ -53,6 +51,7 @@ public class SingleGameActivity extends Activity implements OnClickListener {
     private TextView mWhiteName;
     private TextView showtime;
     private TextView textView;
+
     // Control Button
     private Button restart;
     private Button rollback;
@@ -109,18 +108,10 @@ public class SingleGameActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_single);
-        renjiGameAty = this;
-        int flag = getIntent().getIntExtra("flag", 0);
-        Log.d(TAG, "the value of flag is///////");
+        singleGameAty = this;
         initViews();
-        if (flag == 2) {
-            initGame();
-            initComputer();
-        } else if (flag == 1) {
-            initGame2();
-            initComputer2();
-        }
-
+        initGame();
+        initComputer();
     }
 
     @Override
@@ -132,18 +123,17 @@ public class SingleGameActivity extends Activity implements OnClickListener {
     }
 
     private void initViews() {
-        mGameView = (GameView) findViewById(R.id.game_view);
-        mBlackName = (TextView) findViewById(R.id.black_name);
-        mBlackWin = (TextView) findViewById(R.id.black_win);
-        mBlackActive = (ImageView) findViewById(R.id.black_active);
-        mWhiteName = (TextView) findViewById(R.id.white_name);
-        mWhiteWin = (TextView) findViewById(R.id.white_win);
-        mWhiteActive = (ImageView) findViewById(R.id.white_active);
-        restart = (Button) findViewById(R.id.restart);
-        rollback = (Button) findViewById(R.id.rollback);
+        mGameView = findViewById(R.id.game_view);
+        mBlackName = findViewById(R.id.black_name);
+        mBlackWin = findViewById(R.id.black_win);
+        mBlackActive = findViewById(R.id.black_active);
+        mWhiteName = findViewById(R.id.white_name);
+        mWhiteWin = findViewById(R.id.white_win);
+        mWhiteActive = findViewById(R.id.white_active);
+        restart = findViewById(R.id.restart);
+        rollback = findViewById(R.id.rollback);
         restart.setOnClickListener(this);
         rollback.setOnClickListener(this);
-
     }
 
     private void initGame() {
@@ -157,27 +147,10 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         ai = new ComputerAI(mGame.getWidth(), mGame.getHeight());
     }
 
-    private void initGame2() {
-        me = new Player(getString(R.string.myself), Game.BLACK);
-        computer = new Player(getString(R.string.computer), Game.WHITE);
-        mGame = new Game(mRefreshHandler, me, computer);
-        mGame.setMode(GameConstants.MODE_SINGLE);
-        mGameView.setGame(mGame);
-        updateActive(mGame);
-        updateScore(me, computer);
-        ai2 = new ComputerAI2(mGame.getWidth(), mGame.getHeight());
-    }
-
     private void initComputer() {
         HandlerThread thread = new HandlerThread("computerAi");
         thread.start();
         mComputerHandler = new ComputerHandler(thread.getLooper());
-    }
-
-    private void initComputer2() {
-        HandlerThread thread = new HandlerThread("computerAi");
-        thread.start();
-        mComputerHandler = new ComputerHandler2(thread.getLooper());
     }
 
     private void updateActive(Game game) {
@@ -242,7 +215,6 @@ public class SingleGameActivity extends Activity implements OnClickListener {
             default:
                 break;
         }
-
     }
 
     private void rollback() {
@@ -251,7 +223,6 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         updateActive(mGame);
         mGameView.drawGame();
     }
-
 
     class ComputerHandler extends Handler {
 
@@ -270,28 +241,6 @@ public class SingleGameActivity extends Activity implements OnClickListener {
                 isRollback = false;
             }
         }
-
-    }
-
-    class ComputerHandler2 extends Handler {
-
-        public ComputerHandler2(Looper looper) {
-            super(looper);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            Coordinate a = mGame.getActions().pollLast();
-            mGame.addChess(a, me);
-            Coordinate c = ai2.normalautomatic(mGame.getChessMap(), a);
-            mGame.addChess(c, computer);
-            mGameView.drawGame();
-            if (isRollback) {
-                rollback();
-                isRollback = false;
-            }
-        }
-
     }
 
     public AssetManager assetManager;
@@ -346,5 +295,4 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         }
         return mediaPlayer;
     }
-
 }

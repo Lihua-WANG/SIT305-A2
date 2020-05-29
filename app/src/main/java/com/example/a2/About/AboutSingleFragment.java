@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.a2.R;
 
-public class AboutAIFragment extends Fragment {
+public class AboutSingleFragment extends Fragment {
     View view;//定义view用来设置fragment的layout
 
 
-    public AboutAIFragment() {
+    public AboutSingleFragment() {
         // Required empty public constructor
     }
 
@@ -28,7 +28,7 @@ public class AboutAIFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_about_a_i, container, false);
+        view = inflater.inflate(R.layout.fragment_about_single, container, false);
         return view;
     }
 }

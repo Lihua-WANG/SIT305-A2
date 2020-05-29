@@ -30,6 +30,10 @@ import com.example.a2.RegisterPolicy.PrivacyDialog;
 import com.example.a2.RegisterPolicy.PrivacyPolicyActivity;
 import com.example.a2.RegisterPolicy.TermsActivity;
 
+/**
+ * Register a new account when agree the app policies.
+ */
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String realCode;
@@ -117,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * 显示用户协议和隐私政策
+     * Show user agreement and privacy policy
      */
     private void showPrivacy() {
 
@@ -133,19 +137,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         int index1 = string.indexOf(key1);
         int index2 = string.indexOf(key2);
 
-        //需要显示的字串
+        // The string to display
         SpannableString spannedString = new SpannableString(string);
-        //设置点击字体颜色
+        // Set color of click font
         ForegroundColorSpan colorSpan1 = new ForegroundColorSpan(getResources().getColor(R.color.green));
         spannedString.setSpan(colorSpan1, index1, index1 + key1.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         ForegroundColorSpan colorSpan2 = new ForegroundColorSpan(getResources().getColor(R.color.green));
         spannedString.setSpan(colorSpan2, index2, index2 + key2.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-        //设置点击字体大小
+        // Set size of click font
         AbsoluteSizeSpan sizeSpan1 = new AbsoluteSizeSpan(18, true);
         spannedString.setSpan(sizeSpan1, index1, index1 + key1.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         AbsoluteSizeSpan sizeSpan2 = new AbsoluteSizeSpan(18, true);
         spannedString.setSpan(sizeSpan2, index2, index2 + key2.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-        //设置点击事件
+        // Set click event
         ClickableSpan clickableSpan1 = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -155,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                //点击事件去掉下划线
+                // Remove underline of clickable text
                 ds.setUnderlineText(false);
             }
         };
@@ -170,26 +174,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void updateDrawState(TextPaint ds) {
-                //点击事件去掉下划线
+                // Remove underline of clickable text
                 ds.setUnderlineText(false);
             }
         };
         spannedString.setSpan(clickableSpan2, index2, index2 + key2.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
 
-        //设置点击后的颜色为透明，否则会一直出现高亮
+        // Set text color after clicking to be transparent, otherwise it will always be highlighted
         tv_privacy_tips.setHighlightColor(Color.TRANSPARENT);
-        //开始响应点击事件
+        // Start responding to click events
         tv_privacy_tips.setMovementMethod(LinkMovementMethod.getInstance());
 
         tv_privacy_tips.setText(spannedString);
 
-        //设置弹框宽度占屏幕的80%
+        // Set the width of the pop-up dialog to 80% of the screen
         WindowManager m = getWindowManager();
         Display defaultDisplay = m.getDefaultDisplay();
         final WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
         params.width = (int) (defaultDisplay.getWidth() * 0.80);
         dialog.getWindow().setAttributes(params);
 
+        // Not agree and exit app
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,6 +203,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        // Agree and continue to sign up
         btn_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

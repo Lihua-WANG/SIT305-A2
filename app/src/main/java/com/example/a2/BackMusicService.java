@@ -6,14 +6,16 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.provider.Settings;
 
 import java.io.IOException;
+
+/**
+ * Create a subclass(BackgroundService) of Service class and override necessary methods.
+ */
 
 public class BackMusicService extends Service {
     //creating a mediaplayer object
     private MediaPlayer player;
-
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -41,10 +43,9 @@ public class BackMusicService extends Service {
         }
 //        return player;
         //we have some options for service
-        //start sticky means service will be explicity started and stopped
+        //start sticky means service will be explicitly started and stopped
         return START_STICKY;
     }
-
 
     @Override
     public void onDestroy() {

@@ -8,5 +8,4 @@ public class GameConstants {
 
     public static final int MODE_SINGLE = 0;
     public static final int MODE_FIGHT = 1;
-    public static final int MODE_NET = 2;
 }

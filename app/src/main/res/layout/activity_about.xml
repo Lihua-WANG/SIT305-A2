@@ -20,12 +20,12 @@
 
         <!--detail Tab-->
         <TextView
-            android:id="@+id/AboutAI"
+            android:id="@+id/AboutSingle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
-            android:text="@string/AboutAI"
+            android:text="@string/AboutSingle"
             android:textColor="@color/main_tab_text_color"
             android:textSize="20dp" />
 

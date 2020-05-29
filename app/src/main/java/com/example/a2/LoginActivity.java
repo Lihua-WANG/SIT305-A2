@@ -3,8 +3,6 @@ package com.example.a2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import java.util.ArrayList;
 
@@ -24,7 +22,9 @@ import com.example.a2.RegisterData.User;
 import android.widget.CheckBox;
 import android.content.SharedPreferences;
 
-
+/**
+ *
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private DBOpenHelper mDBOpenHelper;
@@ -64,17 +64,49 @@ public class LoginActivity extends AppCompatActivity {
         if (sp.getBoolean("REM_ISCheck", false)) {
             mCheckRemember.setChecked(true);
             restoreInfo();
-            Log.e("记住密码", "状态：" + mCheckRemember.isChecked());
+            Log.e("Remember Password", "State: " + mCheckRemember.isChecked());
 
             if (sp.getBoolean("AUTO_ISCHECK", false)) {
                 //设置默认是自动登录状态
                 mCheckAutoLogin.setChecked(true);
-                Log.e("自动登录", "状态：" + mCheckAutoLogin.isChecked());
+                Log.e("Auto-Login", "State: " + mCheckAutoLogin.isChecked());
                 //跳转界面
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }
+    }
+
+    private void memInfo(String usr, String pwd, Boolean rem_isCheck, Boolean auto_isCheck) {
+        SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
+        editor.putString("username", usr);
+        editor.putString("password", pwd);
+        editor.putBoolean("REM_ISCheck", rem_isCheck);
+        editor.putBoolean("AUTO_ISCHECK", auto_isCheck);
+        editor.apply();
+        Log.e("Checked_RP", "Account：" + usr +
+                "\n" + "Password: " + pwd +
+                "\n" + "Whether remember password: " + rem_isCheck +
+                "\n" + "Whether auto login: " + auto_isCheck);
+        editor.commit();
+    }
+
+    private void restoreInfo() {
+        SharedPreferences sp = getSharedPreferences("Account Data", 0);
+        mEtUsername.setText(sp.getString("username", ""));
+        mEtPassword.setText(sp.getString("password", ""));
+    }
+
+    private void initView() {
+        // Initial Controls
+        mBtLogin = findViewById(R.id.login);
+        mBtUserClear = findViewById(R.id.bt_usename_clear);
+        mBtPwdClear = findViewById(R.id.bt_pwd_clear);
+        mTvRegister = findViewById(R.id.tv_loginactivity_register);
+        mEtUsername = findViewById(R.id.et_loginactivity_username);
+        mEtPassword = findViewById(R.id.et_loginactivity_password);
+        mCheckRemember = findViewById(R.id.check_remember);
+        mCheckAutoLogin = findViewById(R.id.check_autoLogin);
 
         //Set Login button function.
         mBtLogin.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Set remember password checked box function.
         mCheckRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -147,6 +180,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Set auto login checked box function.
         mCheckAutoLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -165,6 +199,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Sign up button function
         mTvRegister.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -174,6 +209,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Clear text of Users
         mBtUserClear.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -182,6 +218,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Clear text of pwd
         mBtPwdClear.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -189,38 +226,5 @@ public class LoginActivity extends AppCompatActivity {
                 mEtPassword.getText().clear();
             }
         });
-
-    }
-
-    private void memInfo(String usr, String pwd, Boolean rem_isCheck, Boolean auto_isCheck) {
-        SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
-        editor.putString("username", usr);
-        editor.putString("password", pwd);
-        editor.putBoolean("REM_ISCheck", rem_isCheck);
-        editor.putBoolean("AUTO_ISCHECK", auto_isCheck);
-        editor.apply();
-        Log.e("选中保存密码", "账号：" + usr +
-                "\n" + "密码：" + pwd +
-                "\n" + "是否记住密码：" + rem_isCheck +
-                "\n" + "是否自动登陆：" + auto_isCheck);
-        editor.commit();
-    }
-
-    private void restoreInfo() {
-        SharedPreferences sp = getSharedPreferences("Account Data", 0);
-        mEtUsername.setText(sp.getString("username", ""));
-        mEtPassword.setText(sp.getString("password", ""));
-    }
-
-    private void initView() {
-        // Initial Controls
-        mBtLogin = findViewById(R.id.login);
-        mBtUserClear = findViewById(R.id.bt_usename_clear);
-        mBtPwdClear = findViewById(R.id.bt_pwd_clear);
-        mTvRegister = findViewById(R.id.tv_loginactivity_register);
-        mEtUsername = findViewById(R.id.et_loginactivity_username);
-        mEtPassword = findViewById(R.id.et_loginactivity_password);
-        mCheckRemember = findViewById(R.id.check_remember);
-        mCheckAutoLogin = findViewById(R.id.check_autoLogin);
     }
 }

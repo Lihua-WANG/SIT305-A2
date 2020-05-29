@@ -1,8 +1,11 @@
 package com.example.a2.RegisterData;
 
+/**
+ * Define users data
+ */
 public class User {
-    private String name;            //用户名
-    private String password;        //密码
+    private String name;            //Username
+    private String password;        //Password
 
     public User(String name, String password) {
         this.name = name;

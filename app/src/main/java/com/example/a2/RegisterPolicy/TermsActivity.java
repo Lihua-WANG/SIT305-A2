@@ -9,10 +9,11 @@ import android.widget.FrameLayout;
 
 import com.example.a2.R;
 
-
+/**
+ * Users Terms Policy content
+ * viewed from html page.
+ */
 public class TermsActivity extends Activity {
-
-    private static final String TAG = TermsActivity.class.getSimpleName();
 
     private FrameLayout web_view_container;
     private WebView web_view;
@@ -20,25 +21,25 @@ public class TermsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_terms);
-
         initView();
     }
 
     private void initView() {
-
         web_view_container = findViewById(R.id.web_view_container);
         web_view = new WebView(getApplicationContext());
+        // Set web-view content layout
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
         web_view.setLayoutParams(params);
+        // Set web-view content
         web_view.setWebViewClient(new WebViewClient());
-        //动态添加WebView，解决在xml引用WebView持有Activity的Context对象，导致内存泄露
+        // Dynamically add WebView，
+        // Solve the reference to WebView holding Activity's Context object in xml,
+        // which result in memory leak
         web_view_container.addView(web_view);
         web_view.loadUrl("file:///android_asset/user_agreement.html");
-
     }
 
     @Override

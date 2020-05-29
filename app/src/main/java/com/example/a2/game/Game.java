@@ -12,9 +12,9 @@ import java.util.LinkedList;
 
 public class Game {
 
-    public static final int SCALE_SMALL = 11;
+    //    public static final int SCALE_SMALL = 11;
     public static final int SCALE_MEDIUM = 15;
-    public static final int SCALE_LARGE = 19;
+//    public static final int SCALE_LARGE = 19;
 
     // Self
     Player me;
@@ -53,9 +53,9 @@ public class Game {
         this.mMode = mode;
     }
 
-    public int getMode() {
-        return mMode;
-    }
+//    public int getMode() {
+//        return mMode;
+//    }
 
     /**
      * Regret chess
@@ -113,16 +113,6 @@ public class Game {
                     sendAddChess(x, y);
                     mActions.add(new Coordinate(x, y));
                 }
-                return true;
-            }
-        } else if (mMode == GameConstants.MODE_NET) {
-            if (mActive == me.type && mGameMap[x][y] == 0) {
-                mGameMap[x][y] = me.type;
-                mActive = challenger.type;
-                if (!isGameEnd(x, y, me.type)) {
-                    mActions.add(new Coordinate(x, y));
-                }
-                sendAddChess(x, y);
                 return true;
             }
         } else if (mMode == GameConstants.MODE_SINGLE) {
@@ -212,13 +202,6 @@ public class Game {
         mActions.clear();
     }
 
-    /**
-     * 不需要更新落子方，谁输谁先手
-     */
-    public void resetNet() {
-        mGameMap = new int[mGameWidth][mGameHeight];
-        mActions.clear();
-    }
 
     private void changeActive() {
         if (mActive == BLACK) {
@@ -238,10 +221,10 @@ public class Game {
 
     // Determine if five pieces are on the same line
     private boolean isGameEnd(int x, int y, int type) {
-        int leftX = x - 4 > 0 ? x - 4 : 0;
-        int rightX = x + 4 < mGameWidth - 1 ? x + 4 : mGameWidth - 1;
-        int topY = y - 4 > 0 ? y - 4 : 0;
-        int bottomY = y + 4 < mGameHeight - 1 ? y + 4 : mGameHeight - 1;
+        int leftX = Math.max(x - 4, 0);
+        int rightX = Math.min(x + 4, mGameWidth - 1);
+        int topY = Math.max(y - 4, 0);
+        int bottomY = Math.min(y + 4, mGameHeight - 1);
 
         int horizontal = 1;
         // Laterally left

@@ -36,7 +36,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     // Clear screen paint
     Paint clear = new Paint();
 
-    public int[][] mChessArray = null;
+//    public int[][] mChessArray = null;
 
     Bitmap mBlack = null;
     Bitmap mBlackNew = null;
@@ -233,7 +233,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         return bitmap;
     }
 
-    // 画棋盘背景
+    // Painted chessboard background
     private void drawChessBoard() {
         Canvas canvas = mHolder.lockCanvas();
         if (mHolder == null || canvas == null) {

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Go Bang</string>
-    <string name="new_game">New Game</string>
-    <string name="fight">Fight</string>
-    <string name="fight_connection">Network Fight</string>
+    <string name="single_game">Single Game</string>
+    <string name="two_player_fight">Two-Player Fight</string>
+    <string name="about">About</string>
     <string name="bt_main_logout">Logout</string>
     <string name="OldUserName">Gobang</string>
     <string name="OldPassword">123456</string>
@@ -19,7 +19,6 @@
     <string name="white">White</string>
     <string name="restart">New Game</string>
     <string name="rollback">Rollback</string>
-    <string name="about">About</string>
     <string name="exit">Exit</string>
     <string name="equal">Equal</string>
     <string name="fail">Fail</string>
@@ -31,8 +30,7 @@
     <string name="Continue">Continue</string>
     <string name="feedback_email">Feedback</string>
     <string name="feedback_success">Send successfully</string>
-    <string name="feedback_failed">Failed sending!</string>
-    <string name="waiting">Processing, please wait...</string>
+    <string name="waiting">Processing, please wait…</string>
     <string name="request_content">Please input your feedback</string>
     <string name="request_contact">Please input your contact</string>
     <string name="submit">Submit</string>
@@ -43,7 +41,7 @@
     <string name="AboutVideo">Tutorial</string>
     <string name="AboutBasic">Basic Function</string>
     <string name="AboutFight">Fight Model</string>
-    <string name="AboutAI">AI Model</string>
+    <string name="AboutSingle">Single Model</string>
     <string name="users_note">User Note</string>
     <string name="privacy_tips">Welcome to PrivacyView! In order to protect your privacy and use security, please read our Terms of Use and Privacy Policy carefully. Do not use this app until you have confirmed your full understanding and agreement. Thank you!</string>
     <string name="privacy_exit">Exit</string>
@@ -55,7 +53,6 @@
     <string name="opt_privacy">Privacy Policy</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -7,10 +7,6 @@ public class ComputerAI {
     public static final int HOR_VER = 3;
     public static final int VER_HOR = 4;
 
-//    private static final int FIVE = 100; // 活五
-//    private static final int L_FOUR = 90; // 活四
-//    private static final int D_FOUR = 100; // 死四
-
     private int mWidth = 0;
     private int mHeight = 0;
 
@@ -31,12 +27,6 @@ public class ComputerAI {
         mHeight = height;
         black = new int[width][height][5];
         white = new int[width][height][5];
-//        for(int i = 0 ; i < width ; i++){
-//            for(int j = 0; j < height; j++){
-//                black[i][j] = new Chess();
-//                white[i][j] = new Chess();
-//            }
-//        }
     }
 
     /**
@@ -46,7 +36,6 @@ public class ComputerAI {
      */
     public void updateValue(Game game) {
         int[][] map = game.getChessMap();
-
     }
 
     /**
@@ -110,9 +99,7 @@ public class ComputerAI {
                         }
                         if (k == mWidth - 1 || l == mHeight - 1)
                             counter++;
-
                     }
-
 
                     for (int k = i - 1, l = j - 1; l >= 0; k--, l--) {
 
@@ -129,7 +116,6 @@ public class ComputerAI {
                         }
                         if (k == 0 || l == 0)
                             counter++;
-
                     }
                     if (i == 0 || i == mWidth - 1 || j == 0 || j == mHeight - 1)
                         counter++;
@@ -190,7 +176,6 @@ public class ComputerAI {
                         }
                         if (k == 0 || l == mHeight - 1)
                             counter++;
-
                     }
 
 
@@ -209,7 +194,6 @@ public class ComputerAI {
                         }
                         if (k == mWidth - 1 || l == 0)
                             counter++;
-
                     }
                     if (i == 0 || i == mWidth - 1 || j == 0 || j == mHeight - 1)
                         counter++;
@@ -233,7 +217,6 @@ public class ComputerAI {
                                     && white[i][j][4] < 201)
                                 white[i][j][4] = 201;
                         }
-
                     }
 
                     if (j >= 1) {
@@ -260,7 +243,6 @@ public class ComputerAI {
                                 }
                             }
                         }
-
                     }
 
                     if (j >= 1 && i >= 1) {
@@ -352,7 +334,6 @@ public class ComputerAI {
                                     }
                                 }
                             }
-
                         }
                     }
 
@@ -422,12 +403,9 @@ public class ComputerAI {
                                     }
                                 }
                             }
-
                         }
                     }
-
                 }
-
             }
         }
         for (int i = 0; i < mWidth; i++) {
@@ -447,7 +425,6 @@ public class ComputerAI {
                         if (k == mHeight - 1)
                             counter++;
                     }
-
 
                     for (int k = j - 1; k >= 0; k--) {
 
@@ -469,6 +446,7 @@ public class ComputerAI {
                     counter = 0;
 
                     for (int k = i + 1, l = j + 1; l < mHeight; k++, l++) {
+
                         if (k >= mWidth) {
                             break;
                         }
@@ -482,12 +460,10 @@ public class ComputerAI {
                         }
                         if (k == mWidth - 1 || l == mHeight - 1)
                             counter++;
-
                     }
 
 
                     for (int k = i - 1, l = j - 1; l >= 0; k--, l--) {
-
                         if (k < 0) {
                             break;
                         }
@@ -501,10 +477,10 @@ public class ComputerAI {
                         }
                         if (k == 0 || l == 0)
                             counter++;
-
                     }
                     if (i == 0 || i == mWidth - 1 || j == 0 || j == mHeight - 1)
                         counter++;
+
                     black[i][j][1] = plaValue[counter][playerValue[1]];
                     playerValue[1] = 0;
                     counter = 0;
@@ -525,7 +501,6 @@ public class ComputerAI {
 
 
                     for (int k = i - 1; k >= 0; k--) {
-
                         if (map[k][j] == Game.WHITE)
                             playerValue[2]++;
                         if (map[k][j] == 0)
@@ -748,7 +723,6 @@ public class ComputerAI {
                         }
                     }
                 }
-
             }
         }
     }
@@ -756,7 +730,6 @@ public class ComputerAI {
     public Coordinate getPosition(int[][] map) {
         int maxpSum = 0;
         int maxcSum = 0;
-
         int maxpValue = -10;
         int maxcValue = -10;
         int blackRow = 0;
@@ -805,12 +778,11 @@ public class ComputerAI {
                                         + black[i][j][2] + black[i][j][3];
                             }
                         }
-
                     }
                 }
-
             }
         }
+
         Coordinate c = new Coordinate();
         if (maxcValue > maxpValue) {
             c.x = whiteRow;
@@ -819,16 +791,6 @@ public class ComputerAI {
             c.x = blackRow;
             c.y = blackCollum;
         }
-//        Log.d("cuiqing", "x="+c.x+" y="+c.y);
-//        for(int i = 0; i < mWidth; i ++)
-//        {
-//            for(int j = 0; j < mHeight; j ++)
-//            {
-//                Log.d("cuiqing", "black="+Arrays.toString(black[i][j]));
-//                Log.d("cuiqing", "white="+Arrays.toString(white[i][j]));
-//
-//            }
-//        }
         return c;
     }
 }
