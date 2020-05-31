@@ -51,6 +51,25 @@
     <string name="privacy_tips_key2">Privacy Policy</string>
     <string name="opt_terms">Terms of Use</string>
     <string name="opt_privacy">Privacy Policy</string>
+    <string name="input_captcha">Please enter a 4-character code</string>
+    <string name="title_sign_up">Sign Up</string>
+    <string name="hint_username">Please input username</string>
+    <string name="username">Username: </string>
+    <string name="btn_clear">Clear</string>
+    <string name="password">Password: </string>
+    <string name="hint_password">Please input password</string>
+    <string name="checkbox_remember_account">Remember account</string>
+    <string name="checkbox_auto_login">Auto Login</string>
+    <string name="btn_login">Login</string>
+    <string name="textbtn_sign_up">Sign Up</string>
+    <string name="re_password">Re-Password: </string>
+    <string name="hint_re_password">Please enter the password again</string>
+    <string name="captcha">Captcha:</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="tv_read_and_agree">Have read and agreed with</string>
+    <string name="tv_privacy_policy"> Privacy Policy </string>
+    <string name="tv_and">and</string>
+    <string name="tv_terms_policy"> Terms of Use</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

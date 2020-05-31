@@ -44,7 +44,7 @@
                 android:layout_marginLeft="80dp"
                 android:layout_marginRight="100dp"
                 android:height="75dp"
-                android:hint="Input your username"
+                android:hint="@string/hint_username"
                 android:inputType="text"
                 android:maxLength="20"
                 android:paddingLeft="15dp" />
@@ -54,7 +54,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="left|center_vertical"
                 android:gravity="center"
-                android:text="Username: "
+                android:text="@string/username"
                 android:textColor="#050505"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -67,7 +67,7 @@
                 android:layout_marginTop="5dp"
                 android:width="67dp"
                 android:background="#485607"
-                android:text="Clear"
+                android:text="@string/btn_clear"
                 android:textColor="@android:color/white"
                 android:visibility="visible" />
 
@@ -90,7 +90,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:text="Password: "
+                android:text="@string/password"
                 android:textColor="#050505"
                 android:textSize="18sp"
                 android:visibility="visible" />
@@ -103,7 +103,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="100dp"
                 android:height="75dp"
-                android:hint="Input your password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:paddingLeft="15dp"
@@ -117,7 +117,7 @@
                 android:layout_marginTop="5dp"
                 android:width="67dp"
                 android:background="#485607"
-                android:text="Clear"
+                android:text="@string/btn_clear"
                 android:textColor="@android:color/white"
                 android:visibility="visible" />
 
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/usecode_layout"
             android:layout_marginTop="7dp"
-            android:text="Remember account" />
+            android:text="@string/checkbox_remember_account" />
 
         <CheckBox
             android:id="@+id/check_autoLogin"
@@ -139,7 +139,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
             android:layout_marginTop="7dp"
-            android:text="Auto Login" />
+            android:text="@string/checkbox_auto_login" />
 
         <Button
             android:id="@+id/login"
@@ -151,7 +151,7 @@
             android:backgroundTint="#ff485607"
             android:gravity="center"
             android:onClick="run"
-            android:text="Login"
+            android:text="@string/btn_login"
             android:textColor="@android:color/white"
             tools:ignore="OnClick" />
 
@@ -163,7 +163,7 @@
             android:layout_alignRight="@id/login"
             android:layout_marginTop="7dp"
             android:background="#00000000"
-            android:text="Sign Up"
+            android:text="@string/textbtn_sign_up"
             android:textSize="16sp"
             android:layout_centerVertical="true"
             android:clickable="true" />

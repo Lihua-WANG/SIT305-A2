@@ -5,6 +5,10 @@ import android.content.Context;
 
 import com.example.a2.R;
 
+/**
+ * Dialog pop-up before entering sign up interface.
+ */
+
 public class PrivacyDialog extends Dialog {
 
     public PrivacyDialog(Context context) {

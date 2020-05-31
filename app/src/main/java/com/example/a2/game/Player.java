@@ -1,20 +1,28 @@
 package com.example.a2.game;
 
+/**
+ * Players
+ * Score recording
+ */
+
 public class Player {
 
+    // Players name
     String mName;
     // white or black
     int type;
-    // Victory
+    // Victory numbers
     int mWin;
-    // Defeat
+    // Defeat numbers
     int mLose;
 
+    // Initial constructors
     public Player(String name, int type) {
-        this.mName = name;
-        this.type = type;
+        this.mName = name; // Player name
+        this.type = type; // player's chess type
     }
 
+    // Returns the type of the chess piece
     public Player(int type) {
         if (type == Game.WHITE) {
             this.mName = "White";
@@ -31,10 +39,13 @@ public class Player {
     /**
      * Win a game
      */
+
+    // Add a victory
     public void win() {
         mWin += 1;
     }
 
+    // Get the number of current victory
     public String getWin() {
         return String.valueOf(mWin);
     }

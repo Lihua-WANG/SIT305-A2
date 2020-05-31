@@ -29,7 +29,7 @@
             android:id="@+id/tv_registeractivity_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="@string/title_sign_up"
             android:textColor="#fff"
             android:textSize="20dp"
             android:layout_toRightOf="@+id/iv_registeractivity_back"
@@ -57,7 +57,7 @@
                 android:id="@+id/tv_registeractivity_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username: " />
+                android:text="@string/username" />
 
             <EditText
                 android:id="@+id/et_registeractivity_username"
@@ -65,7 +65,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:hint="Please input username" />
+                android:hint="@string/hint_username" />
 
         </LinearLayout>
 
@@ -79,7 +79,7 @@
                 android:id="@+id/tv_registeractivity_password1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password: " />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/et_registeractivity_password1"
@@ -87,7 +87,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:hint="Please input password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -101,7 +101,7 @@
                 android:id="@+id/tv_registeractivity_password2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Re-Password: " />
+                android:text="@string/re_password" />
 
             <EditText
                 android:id="@+id/et_registeractivity_password2"
@@ -109,7 +109,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
-                android:hint="Please enter the password again"
+                android:hint="@string/hint_re_password"
                 android:inputType="textPassword" />
 
         </LinearLayout>
@@ -132,7 +132,7 @@
                     android:id="@+id/tv_registeractivity_phoneCodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Captcha: " />
+                    android:text="@string/captcha" />
 
                 <EditText
                     android:id="@+id/et_registeractivity_phoneCodes"
@@ -141,7 +141,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="3"
-                    android:hint="Please enter a 4-digit code" />
+                    android:hint="@string/input_captcha" />
 
                 <ImageView
                     android:id="@+id/iv_registeractivity_showCode"
@@ -164,7 +164,7 @@
             android:layout_marginTop="40dp"
             android:background="#485607"
             android:onClick="onClick"
-            android:text="Sign Up"
+            android:text="@string/btn_sign_up"
             android:textColor="#FFFFFF" />
 
         <LinearLayout
@@ -174,29 +174,31 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/tv_read_and_agree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="已阅读并同意"
+                android:text="@string/tv_read_and_agree"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_xieyi"
+                android:id="@+id/tv_privacy_policy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="隐私协议"
+                android:text="@string/tv_privacy_policy"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_and"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="和"
+                android:text="@string/tv_and"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_yinsi"
+                android:id="@+id/tv_terms_policy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="条件"
+                android:text="@string/tv_terms_policy"
                 android:textSize="14sp" />
 
         </LinearLayout>

@@ -23,7 +23,8 @@ import android.widget.CheckBox;
 import android.content.SharedPreferences;
 
 /**
- *
+ * Store users account internal (in AnroidSDK) using SQLite.
+ * Including Remember pwd and auto-login function.
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox mCheckAutoLogin;
     private SharedPreferences sp;
 
-    //中介变量context
+    // Intermediary variable context
     @SuppressLint("StaticFieldLeak")
     private static LoginActivity context = null;
 
@@ -48,35 +49,40 @@ public class LoginActivity extends AppCompatActivity {
         // Assign the layout login activity_login to LoginActivity
         setContentView(R.layout.activity_login);
 
-        //初始化context
+        // Initialize the context
         context = this;
-
-        sp = this.getSharedPreferences("Account Data", 0);
-
+        // Initial the views
         initView();
-
         mDBOpenHelper = new DBOpenHelper(this);
 
+        // Open Preferences, the name is "Account Data",
+        // if it exists, open it, otherwise create new Preferences
+        // mode:0 Specifies that the SharedPreferences data can only be read and written by this application
+        sp = this.getSharedPreferences("Account Data", 0);
         restoreInfo();
 
+        // Set remember password to initialize to true
         mCheckRemember.setChecked(true);
-
+        // Judge the status of remember password checkbox
+        // The default setting is to remember the password status
         if (sp.getBoolean("REM_ISCheck", false)) {
             mCheckRemember.setChecked(true);
             restoreInfo();
             Log.e("Remember Password", "State: " + mCheckRemember.isChecked());
 
+            // Judge the status of automatic login checkbox
             if (sp.getBoolean("AUTO_ISCHECK", false)) {
-                //设置默认是自动登录状态
+                // The default setting is automatic login status
                 mCheckAutoLogin.setChecked(true);
                 Log.e("Auto-Login", "State: " + mCheckAutoLogin.isChecked());
-                //跳转界面
+                // Jump interface
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }
     }
 
+    // The information is stored in a file named "Account Data" using SharedPreferences
     private void memInfo(String usr, String pwd, Boolean rem_isCheck, Boolean auto_isCheck) {
         SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
         editor.putString("username", usr);
@@ -97,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         mEtPassword.setText(sp.getString("password", ""));
     }
 
+    // Initialize the controls
     private void initView() {
         // Initial Controls
         mBtLogin = findViewById(R.id.login);
@@ -108,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
         mCheckRemember = findViewById(R.id.check_remember);
         mCheckAutoLogin = findViewById(R.id.check_autoLogin);
 
-        //Set Login button function.
+        // Login button monitoring method
         mBtLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -128,6 +135,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                     if (match) {
+                        // User information is saved only after successful login
+                        // and remember password box is selected
                         if (mCheckRemember.isChecked()) {
                             mCheckRemember.setChecked(true);
                             String usr = mEtUsername.getText().toString();
@@ -135,9 +144,9 @@ public class LoginActivity extends AppCompatActivity {
                             memInfo(usr, pwd, mCheckRemember.isChecked(), mCheckAutoLogin.isChecked());
 
                             if (sp.getBoolean("AUTO_ISCHECK", false)) {
-                                //设置默认是自动登录状态
+                                // The default setting is automatic login status
                                 mCheckAutoLogin.setChecked(true);
-                                //跳转界面
+                                // Jump to MainActivity
                                 Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                                 LoginActivity.this.startActivity(intent1);
                             }

@@ -28,6 +28,11 @@ import com.example.a2.game.Player;
 
 import java.io.IOException;
 
+/**
+ * This is man-machine battle mode,
+ * which can play single with computer.
+ */
+
 public class SingleGameActivity extends Activity implements OnClickListener {
     private static final String TAG = "SingleGameActivity";
     public SingleGameActivity singleGameAty = this;
@@ -114,6 +119,7 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         initComputer();
     }
 
+    // Back Home
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if(keyCode == KeyEvent.KEYCODE_BACK){
@@ -122,6 +128,7 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         return super.onKeyDown(keyCode, event);
     }
 
+    // Register the components and the listeners
     private void initViews() {
         mGameView = findViewById(R.id.game_view);
         mBlackName = findViewById(R.id.black_name);
@@ -136,10 +143,14 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         rollback.setOnClickListener(this);
     }
 
+    // Register the players and images,
+    // set the game mode, update the game page the score information,
+    // register the single game algorithm
     private void initGame() {
         me = new Player(getString(R.string.myself), Game.BLACK);
         computer = new Player(getString(R.string.computer), Game.WHITE);
         mGame = new Game(mRefreshHandler, me, computer);
+        // Set game mode is single game
         mGame.setMode(GameConstants.MODE_SINGLE);
         mGameView.setGame(mGame);
         updateActive(mGame);
@@ -147,12 +158,14 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         ai = new ComputerAI(mGame.getWidth(), mGame.getHeight());
     }
 
+    // init the computer thread to play with you
     private void initComputer() {
         HandlerThread thread = new HandlerThread("computerAi");
         thread.start();
         mComputerHandler = new ComputerHandler(thread.getLooper());
     }
 
+    // Update the game and game player turns in current
     private void updateActive(Game game) {
         if (game.getActive() == Game.BLACK) {
             mBlackActive.setVisibility(View.VISIBLE);
@@ -163,17 +176,20 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         }
     }
 
+    // Update score
     private void updateScore(Player black, Player white) {
         mBlackWin.setText(black.getWin());
         mWhiteWin.setText(white.getWin());
     }
 
+    // terminate handler thread
     @Override
     protected void onDestroy() {
         mComputerHandler.getLooper().quit();
         super.onDestroy();
     }
 
+    // Create a dialog to show who win, and make decisions of continue game or exit.
     private void showWinDialog(String message) {
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setCancelable(false);
@@ -196,19 +212,27 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         b.show();
     }
 
+    // Create listener of rollback and restart a new game button
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // If click new game button
             case R.id.restart:
+                // reset game
                 mGame.reset();
+                // update the game page
                 updateActive(mGame);
+                // update the score
                 updateScore(me, computer);
+                // redraw the game page
                 mGameView.drawGame();
                 break;
+            // If click rollback button
             case R.id.rollback:
+                // if is not your turn, set rollback status is done
                 if (mGame.getActive() != me.getType()) {
                     isRollback = true;
-                } else {
+                } else { // rollback
                     rollback();
                 }
                 break;
@@ -217,13 +241,19 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         }
     }
 
+    // rollback operation in single game
     private void rollback() {
+        // Rollback computer turn
         mGame.rollback();
+        // rollback your turn
         mGame.rollback();
+        // update the game page
         updateActive(mGame);
+        // redraw the game page
         mGameView.drawGame();
     }
 
+    // Create the computer thread to play with user
     class ComputerHandler extends Handler {
 
         public ComputerHandler(Looper looper) {
@@ -232,9 +262,13 @@ public class SingleGameActivity extends Activity implements OnClickListener {
 
         @Override
         public void handleMessage(Message msg) {
+            // update score of computer win times
             ai.updateValue(mGame.getChessMap());
+            // get computer piece position
             Coordinate c = ai.getPosition(mGame.getChessMap());
+            // add chess piece from computer
             mGame.addChess(c, computer);
+            // redraw the game page
             mGameView.drawGame();
             if (isRollback) {
                 rollback();
@@ -243,8 +277,10 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         }
     }
 
+    // Audios are all stored in assets.
     public AssetManager assetManager;
 
+    // Play a short audio when end a round
     public MediaPlayer playCongratsRing() {
         MediaPlayer mediaPlayer = null;
         try {
@@ -262,6 +298,7 @@ public class SingleGameActivity extends Activity implements OnClickListener {
         return mediaPlayer;
     }
 
+    // Play the sound of playing chess piece
     public MediaPlayer playFailRing() {
         MediaPlayer mediaPlayer = null;
         try {

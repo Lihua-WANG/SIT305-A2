@@ -1,8 +1,9 @@
 package com.example.a2.game;
 
 /**
- * Coordinate
+ * Coordinate: Save (x, y) coordinates
  */
+
 public class Coordinate {
     public int x;
     public int y;

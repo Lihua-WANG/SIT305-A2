@@ -1,5 +1,9 @@
 package com.example.a2.game;
 
+/**
+ * Game states
+ */
+
 public class GameConstants {
 
     public static final int GAME_OVER = 0;

@@ -1,11 +1,8 @@
 package com.example.a2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,6 +10,11 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * This is the Home page after login
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                // Clear the code of automatic login and remember password on the login interface
                 SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
                 editor.putBoolean("REM_ISCheck", false);
                 editor.putBoolean("AUTO_ISCHECK", false);
                 editor.apply();
 
+                // Jump to LoginActivity, and finish the app
                 Intent intent_login = new Intent();
                 intent_login.setClass(MainActivity.this, LoginActivity.class);
                 //The key code, put the new activity at the top of the stack

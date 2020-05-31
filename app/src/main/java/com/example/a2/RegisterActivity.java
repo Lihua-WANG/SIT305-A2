@@ -48,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText mEtRegisteractivityPhonecodes;
     private ImageView mIvRegisteractivityShowcode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

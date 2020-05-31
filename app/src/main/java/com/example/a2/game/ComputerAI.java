@@ -1,5 +1,11 @@
 package com.example.a2.game;
 
+/**
+ * SingleGame algorithm, attributes and constructor initial
+ * Judging the various situations of the chess pieces by human-player
+ * and method to deal with
+ */
+
 public class ComputerAI {
 
     public static final int HOR = 1;

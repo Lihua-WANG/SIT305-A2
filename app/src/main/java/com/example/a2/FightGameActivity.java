@@ -31,17 +31,21 @@ import java.io.IOException;
 
 public class FightGameActivity extends Activity implements OnClickListener {
 
+    // Assign a tag to Fight game mode
     private static final String TAG = "FightGameActivity";
 
+    // Define the main reference object
     GameView mGameView = null;
-
     Game mGame;
     Player black;
     Player white;
 
+    // Define controls
+    // The text of black or whit win times
     private TextView mBlackWin;
     private TextView mWhiteWin;
 
+    // image of black and white chess pieces
     private ImageView mBlackActive;
     private ImageView mWhiteActive;
 
@@ -49,12 +53,16 @@ public class FightGameActivity extends Activity implements OnClickListener {
     private Button restart;
     private Button rollback;
 
+    // Called after the application is refreshed
     @SuppressLint("HandlerLeak")
     private Handler mRefreshHandler = new Handler() {
 
         public void handleMessage(Message msg) {
             Log.d(TAG, "refresh action=" + msg.what);
             switch (msg.what) {
+                // If message is game over,
+                // judge which part win,
+                // Popup Dialog of win part message, play game sound and record adding 1 to win part
                 case GameConstants.GAME_OVER:
                     if (msg.arg1 == Game.BLACK) {
                         showWinDialog("Black Win!");
@@ -65,8 +73,11 @@ public class FightGameActivity extends Activity implements OnClickListener {
                         playRing();
                         white.win();
                     }
+                    // Update the score display box
                     updateScore(black, white);
                     break;
+                // If message is adding chess piece,
+                // Update the current chess putting players
                 case GameConstants.ADD_CHESS:
                     updateActive(mGame);
                     playPutRing();
@@ -85,6 +96,7 @@ public class FightGameActivity extends Activity implements OnClickListener {
         initGame();
     }
 
+    // Register the components and the listeners
     private void initViews() {
         mGameView = findViewById(R.id.game_view);
         mBlackWin = findViewById(R.id.black_win);
@@ -97,31 +109,38 @@ public class FightGameActivity extends Activity implements OnClickListener {
         rollback.setOnClickListener(this);
     }
 
+    // Register the players and images,
+    // set the game mode, update the game page the score information
     private void initGame() {
         black = new Player(Game.BLACK);
         white = new Player(Game.WHITE);
         mGame = new Game(mRefreshHandler, black, white);
+        // Set game mode is fight game
         mGame.setMode(GameConstants.MODE_FIGHT);
         mGameView.setGame(mGame);
         updateActive(mGame);
         updateScore(black, white);
     }
 
+    // Update the game and game player turns in current
     private void updateActive(Game game) {
+        // If it is black turn, invisible white
         if (game.getActive() == Game.BLACK) {
             mBlackActive.setVisibility(View.VISIBLE);
             mWhiteActive.setVisibility(View.INVISIBLE);
-        } else {
+        } else { // Otherwise, invisible black
             mBlackActive.setVisibility(View.INVISIBLE);
             mWhiteActive.setVisibility(View.VISIBLE);
         }
     }
 
+    // Update score
     private void updateScore(Player black, Player white) {
         mBlackWin.setText(black.getWin());
         mWhiteWin.setText(white.getWin());
     }
 
+    // Create a dialog to show who win, and make decisions of continue game or exit.
     private void showWinDialog(String message) {
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setCancelable(false);
@@ -144,18 +163,28 @@ public class FightGameActivity extends Activity implements OnClickListener {
         b.show();
     }
 
+    // Create listener of rollback and restart a new game button
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // If click new game button
             case R.id.restart:
+                // reset game
                 mGame.reset();
+                // update the game page
                 updateActive(mGame);
+                // update the score
                 updateScore(black, white);
+                // redraw the game page
                 mGameView.drawGame();
                 break;
+            // If click rollback button
             case R.id.rollback:
+                // regret chess piece
                 mGame.rollback();
+                // update the game page
                 updateActive(mGame);
+                // redraw the game page
                 mGameView.drawGame();
                 break;
             default:
@@ -163,8 +192,10 @@ public class FightGameActivity extends Activity implements OnClickListener {
         }
     }
 
+    // Audios are all stored in assets.
     public AssetManager assetManager;
 
+    // Play a short audio when end a round
     public MediaPlayer playRing() {
         MediaPlayer mediaPlayer = null;
         try {
@@ -182,6 +213,7 @@ public class FightGameActivity extends Activity implements OnClickListener {
         return mediaPlayer;
     }
 
+    // Play the sound of playing chess piece
     public MediaPlayer playPutRing() {
         MediaPlayer mediaPlayer = null;
         try {
