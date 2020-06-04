@@ -1,4 +1,4 @@
-Sorry, I forgot to make changelog file in the past 4 commits times.
+Sorry, I forgot to update changelog file in the past 4 commits times.
 I will start listing the changes from 16/05/2020, also will add the 4 missed commits. 
 The project Github commit can prove that.
 
@@ -8,11 +8,10 @@ Day1: 13/05/2020
 Build Login page and Home page.
 
 Day2: 14/05/2020 
-Create the basic parts of the game: 
-game logic, board drawing, coordinate system, player scoring.
+Create the basic parts of the game: game logic, chessboard drawing, coordinate system, player scoring.
 
 Day3: 15/05/2020 
-Create Go Bang algorithm.
+Create Go Bang AI algorithm.
 Build Man-machine models (Single player, including simple model and difficult model).
 Build Fight model (Two players play chess in one mobile).
 
@@ -23,3 +22,54 @@ Build the register page, including using SQLsite to store users' information.
 Day5 17/05/2020
 Build feedback function.
 Add some background music media.
+
+Day6 18/05/2020
+Update feedback function.
+Change feedback function from intent email to activity service.
+Edit app icon.
+
+Day7 19/05/2020
+Build the About function. 
+Update the feedback function.
+
+Day8 20/05/2020
+Build background service function of background music.
+
+Day9 21/05/2020
+Update About function.
+Making about content by sliding effect.
+
+Day10 22/05/2020
+Update the Login page.
+Add remember account and auto log in function.
+
+Day11 23/05/2020
+Fixed the logout function and music service.
+
+Day12 24/05/2020
+Build CheckBox of privacy policy in Register page. 
+Create canvas of agreements content when click policy.
+
+Day13 25/05/2020
+Build About sliding content.
+Create a stretch image function including zoom, double tap to resize...
+
+Day14 26/05/2020
+Update policy function when register.
+Require users to agree policy first and then sign up.
+Update the feedback function with firebase to store feedback data.
+
+Day15 29/05/2020
+Update and modified this application.
+Including fix game bug and adjust logic class.
+Add some comments.
+
+Day16 31/05/2020
+Add comments.
+
+Day17 04/06/2020
+Update About Fragments, add contents on Single/Fight/Basic fragments.
+Update commits.
+Beautify UI and accomplish the app.
+DONE!!!!!!!!
+y（^ヮ^）y
