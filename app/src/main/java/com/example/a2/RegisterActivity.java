@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent1);
                 finish();
                 break;
-            case R.id.iv_registeractivity_showCode:    //Change the generation of random verification codes
+            case R.id.iv_registeractivity_showCode: //Change the generation of random verification codes
                 mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
                 realCode = Code.getInstance().getCode().toLowerCase();
                 break;

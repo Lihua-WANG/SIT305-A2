@@ -1,21 +1,19 @@
 package com.example.a2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.View;
-import android.widget.TextView;
-import android.os.Bundle;
-
-import com.example.a2.About.AboutSingleFragment;
 import com.example.a2.About.AboutBasicFragment;
 import com.example.a2.About.AboutFightFragment;
+import com.example.a2.About.AboutSingleFragment;
 import com.example.a2.About.AboutVideoFragment;
 
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ import java.util.List;
  * Use ViewPager + Fragment to implement the sliding menu Tab effect
  */
 
-public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
+public class AboutActivity extends FragmentActivity implements View.OnClickListener {
 
     private TextView AboutAI, AboutFight, AboutBasic, AboutVideo;
     private ViewPager vp;
@@ -47,6 +45,9 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0); // Initially set ViewPager to select the first frame
         AboutAI.setTextColor(Color.parseColor("#55830C"));
+        AboutFight.setTextColor(Color.parseColor("#FF000000"));
+        AboutBasic.setTextColor(Color.parseColor("#FF000000"));
+        AboutVideo.setTextColor(Color.parseColor("#FF000000"));
 
         // ViewPager monitoring events
         vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

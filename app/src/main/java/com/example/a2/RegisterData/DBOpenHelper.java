@@ -35,7 +35,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     /**
      * Override the abstract methods in the subclass DBOpenHelper,
      * which were declared in the abstract class SQLiteOpenHelper
-     * onCreate() Create a database
+     * onCreate() Create a database table
      * onUpgrade() Add, delete, and modify the database
      *
      * @param db

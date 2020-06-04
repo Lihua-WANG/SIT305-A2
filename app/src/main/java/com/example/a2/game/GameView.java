@@ -277,7 +277,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         return bitmap;
     }
 
-    // Painted chessboard background
+    // Judge whether can paint chessboard background
     private void drawChessBoard() {
         Canvas canvas = mHolder.lockCanvas();
         if (mHolder == null || canvas == null) {
@@ -345,7 +345,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
      * @param canvas
      */
 
-    // Draw the chessboard frame
+    // Draw the focus frame
     private void drawFocus(Canvas canvas) {
         if (isDrawFocus) {
             canvas.drawBitmap(bFocus, focus.x * mChessSize, focus.y * mChessSize, chessPaint);

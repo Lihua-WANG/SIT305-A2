@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.a2.ForegroundService.BackMusicService;
+
 /**
  * This is the Home page after login
  */
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // Clear the code of automatic login and remember password on the login interface
+                // Clear the status of automatic login and remember password on the login interface
                 SharedPreferences.Editor editor = getSharedPreferences("Account Data", 0).edit();
                 editor.putBoolean("REM_ISCheck", false);
                 editor.putBoolean("AUTO_ISCHECK", false);

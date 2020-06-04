@@ -13,6 +13,8 @@ import java.util.LinkedList;
 
 public class Game {
 
+    // Chessboard size
+    // Small: 11 grids per line; Medium: 15; Large: 19
     public static final int SCALE_SMALL = 11;
     public static final int SCALE_MEDIUM = 15;
     public static final int SCALE_LARGE = 19;
@@ -109,7 +111,7 @@ public class Game {
     }
 
     /**
-     * Set a chess piece
+     * Judge whether can set a chess piece
      *
      * @param x Horizontal subscript
      * @param y Vertical subscript
@@ -163,8 +165,9 @@ public class Game {
      * @param player Game player
      */
     public void addChess(int x, int y, Player player) {
-        // Judge the type of chess piece
+
         if (mGameMap[x][y] == 0) {
+            // Judge the type of chess piece
             // Assign the color type of the chess at the corresponding position
             mGameMap[x][y] = player.type;
             mActions.add(new Coordinate(x, y));

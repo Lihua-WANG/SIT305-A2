@@ -4,18 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
     tools:context=".About.AboutVideoFragment">
 
     <VideoView
-        android:id="@+id/videoview"
+        android:id="@+id/Tutorial_videoview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="4:3"
+        app:layout_constraintDimensionRatio="4:2.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
 
     <TextView
         android:id="@+id/buffering_textview"
@@ -23,12 +25,47 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="@string/buffering_string"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.393" />
+
+    <TextView
+        android:id="@+id/tx_Tutorial_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:text="How to play Go Bang?"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/main_tab_text_color"
+        android:textSize="30sp"
+        app:fontFamily="casual"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tx_Tutorial_content"
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="73dp"
+        android:text="@string/tutorial_content"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tutorial_videoview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

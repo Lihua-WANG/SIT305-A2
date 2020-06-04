@@ -95,13 +95,15 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
-        //The function from OnScaleGestureListener，Zoom start
+        // The function from OnScaleGestureListener，
+        // Zoom start
         return true;//Must return true to have effect
     }
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
-        //The function from OnScaleGestureListener，Zoom ended
+        // The function from OnScaleGestureListener，
+        // Zoom ended
     }
 
     @Override
@@ -113,13 +115,13 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
 
         if (getPreScale() > 1) {
             float x = 0, y = 0;
-            final int pointerCount = event.getPointerCount();
+            final int pointerCount = event.getPointerCount(); // Get the number of fingers
             for (int i = 0; i < pointerCount; i++) {
                 x += event.getX(i);
                 y += event.getY(i);
             }
-            x = x / pointerCount;
-            y = y / pointerCount;
+            x = x / pointerCount; // Get x average
+            y = y / pointerCount; // Get y average
             if (pointerCount != lastPointerCount) {
                 lastX = x;
                 lastY = y;
@@ -132,10 +134,11 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
                     lastY = y;
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    float delX = x - lastX;
-                    float delY = y - lastY;
+                    float delX = x - lastX; // Calculate moving distance in x direction
+                    float delY = y - lastY; // Calculate moving distance in y direction
 
                     RectF rectF = getMatrixRectF();
+                    // Control the moving border cannot exceed the image range
                     if ((rectF.left >= 0 && delX > 0) || (rectF.right <= getWidth() && delX < 0)) {
                         delX = 0;
                     }
@@ -155,13 +158,14 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         return true;
     }
 
-    //Get the current total zoom
+    // Get the current total zoom
     private float getPreScale() {
         float[] matrix = new float[9];
         mMatrix.getValues(matrix);
         return matrix[Matrix.MSCALE_X];
     }
 
+    // Get the range of the picture according to the current picture Matrix
     private RectF getMatrixRectF() {
 
         RectF rect = new RectF();
@@ -204,6 +208,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
             }
         }
 
+        //  If the width or height is smaller than the screen, centre it
         if (rect.width() <= width) {
             // The horizontal coordinate of the center point of the control
             // minus the horizontal coordinate of the center point of the picture is
@@ -221,6 +226,7 @@ public class ZoomTranslateDoubleTapImageView extends androidx.appcompat.widget.A
         }
     }
 
+    // Zoom
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();

@@ -8,6 +8,10 @@ package com.example.a2.game;
 
 public class ComputerAI {
 
+    private static final int FIVE = 100; // Live five: five in a row and both ends are not blocked
+    private static final int L_FOUR = 90; // Live four: four in a row and one end blocked, another not
+    private static final int D_FOUR = 100; // Dead four: four in a row and both ends are blocked
+
     public static final int HOR = 1;
     public static final int VER = 2;
     public static final int HOR_VER = 3;

@@ -1,5 +1,6 @@
 package com.example.a2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,10 +35,13 @@ import java.io.IOException;
  */
 
 public class SingleGameActivity extends Activity implements OnClickListener {
+
+    // Assign a tag to Single game mode
     private static final String TAG = "SingleGameActivity";
     public SingleGameActivity singleGameAty = this;
-    GameView mGameView = null;
 
+    // Define the main reference object
+    GameView mGameView = null;
     Game mGame;
     Player me;
     Player computer;
@@ -64,13 +68,14 @@ public class SingleGameActivity extends Activity implements OnClickListener {
     private boolean isRollback;
 
     /**
-     * Handle game callback information and refresh the interface
+     * Handle computer player thread
      */
     private Handler mComputerHandler;
 
     /**
      * Handle game callback information and refresh the interface
      */
+    @SuppressLint("HandlerLeak")
     private Handler mRefreshHandler = new Handler() {
 
         public void handleMessage(Message msg) {
