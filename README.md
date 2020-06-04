@@ -10,3 +10,6 @@ In this app, you can play with your friends (Human) on the same device in two-pl
 
 GitHub Link:  
 https://github.com/Lihua-WANG/SIT305-A2
+
+Demonstration Video uploaded in YouTube:  
+https://youtu.be/RPuJ-YSzZjU
